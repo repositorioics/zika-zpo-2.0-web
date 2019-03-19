@@ -39,7 +39,7 @@ public class ZpoInfantDataService {
     @SuppressWarnings("unchecked")
     public List<ZpoInfantData> getZpoInfantsDataByUser(String username){
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM ZpoInfantData zpEstInfa where zpEstInfa.pregnantId in (select zpo00.recordId from Zpo00Screening zpo00 where zpo00.pasive = '0')");
+        Query query = session.createQuery("FROM ZpoInfantData zpEstInfa where zpEstInfa.recordId not in (select zpo08.recordId from Zpo08StudyExit zpo08 where zpo08.pasive = '0')");
         //query.setParameter("usuarioactual",username);
 
 

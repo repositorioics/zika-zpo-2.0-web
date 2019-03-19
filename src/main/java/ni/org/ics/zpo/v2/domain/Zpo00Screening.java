@@ -43,6 +43,7 @@ public class Zpo00Screening extends BaseMetaData implements Auditable{
     private String scrReasonNot;
     private String scrReasonOther;
     private String scrCs;
+    private String scrTipo;
 
     @Id
     @Column(name = "record_id", nullable = false, length = 25)
@@ -277,6 +278,15 @@ public class Zpo00Screening extends BaseMetaData implements Auditable{
 
     public void setScrCs(String scrCs) {
         this.scrCs = scrCs;
+    }
+
+    @Column(name = "scr_tipo", nullable = true, length = 1)
+    public String getScrTipo() {
+        return scrTipo;
+    }
+
+    public void setScrTipo(String scrTipo) {
+        this.scrTipo = scrTipo;
     }
 
     @Override

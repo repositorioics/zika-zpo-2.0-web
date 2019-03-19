@@ -13,7 +13,7 @@ import java.util.Date;
  * V1.0
  */
 @Entity
-@Table(name = "zpo_datos_infante", catalog = "zika_zpo_v2")
+@Table(name = "zpo_datos_infante", catalog = "zika_zpo")
 public class ZpoInfantData extends BaseMetaData implements Auditable {
 
     private static final long serialVersionUID = 1L;

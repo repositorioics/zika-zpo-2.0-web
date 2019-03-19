@@ -15,7 +15,7 @@ import java.util.Date;
  * V1.0
  */
 @Entity
-@Table(name = "zpo_datos_embarazada", catalog = "zika_zpo_v2")
+@Table(name = "zpo_datos_embarazada", catalog = "zika_zpo")
 public class ZpoDatosEmbarazada extends BaseMetaData implements Auditable{
 
     /**
