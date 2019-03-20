@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="zika-zpo-2.0-web:war exploded">
-    <output-path>$PROJECT_DIR$/target/zika-zpo-0.1</output-path>
+    <output-path>$PROJECT_DIR$/target/zika-zpo-v2-0.1</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
