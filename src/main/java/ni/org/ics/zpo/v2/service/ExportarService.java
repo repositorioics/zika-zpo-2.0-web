@@ -2571,7 +2571,7 @@ public class ExportarService {
 
     @SuppressWarnings("unchecked")
 	private List<String> getSubjects(ExportParameters exportParameters) throws SQLException{
-        StringBuilder sqlStrBuilder = new StringBuilder("select zpo00.recordId from Zpo00Screening zpo00");
+        StringBuilder sqlStrBuilder = new StringBuilder("select zpo00.recordId from ZpoScreening zpo00");
         if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" where zpo00.recordId between :inicio and :fin ");
 
         Session session = sessionFactory.getCurrentSession();

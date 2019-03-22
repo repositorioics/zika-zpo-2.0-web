@@ -33,7 +33,7 @@ public class DashboardService {
         		"count(zpo00.scrCs) as total, " +
         		"sum(case zpo00.scrCs when 'CSSFV' then 1 else 0 end) as CSSFV, " +
         		"sum(case zpo00.scrCs when 'CSFB' then 1 else 0 end) as CSFB " +
-        		"FROM Zpo00Screening zpo00 " +
+        		"FROM ZpoScreening zpo00 " +
         		"where zpo00.scrVisitDate between :fechaInicio and :fechaFinal group by zpo00.scrVisitDate order by zpo00.scrVisitDate");
 		query.setTimestamp("fechaInicio", timeStampInicio);
 		query.setTimestamp("fechaFinal", timeStampFinal);	

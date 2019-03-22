@@ -42,7 +42,7 @@ public class ZpoEstadoEmbarazadaService {
     @SuppressWarnings("unchecked")
     public List<ZpoEstadoEmbarazada> getZpEstadoEmbarazadByUser(String username){
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM ZpoEstadoEmbarazada zpEstado where zpEstado.pasive = '0' and zpEstado.recordId in (select zpo00.recordId from Zpo00Screening zpo00 where zpo00.pasive = '0')");
+        Query query = session.createQuery("FROM ZpoEstadoEmbarazada zpEstado where zpEstado.pasive = '0' and zpEstado.recordId in (select zpo00.recordId from ZpoScreening zpo00 where zpo00.pasive = '0')");
         //query.setParameter("usuarioactual",username);
         return query.list();
     }

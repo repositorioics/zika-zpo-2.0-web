@@ -1,6 +1,6 @@
 package ni.org.ics.zpo.v2.movil.controller;
 
-import ni.org.ics.zpo.v2.domain.Zpo00Screening;
+import ni.org.ics.zpo.v2.domain.ZpoScreening;
 import ni.org.ics.zpo.v2.service.Zpo00ScreeningService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Manejo de las solicitudes a la aplicacion mediante JSON para el formulario Zpo00Screening
+ * Manejo de las solicitudes a la aplicacion mediante JSON para el formulario ZpoScreening
  * Created by FIRSTICT on 10/11/2016.
  * V1.0
  */
@@ -34,9 +34,9 @@ public class Zpo00ScreeningController {
      */
     @RequestMapping(value = "zpo00Screenings", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    List<Zpo00Screening> getZpo00Screenings() {
-        logger.info("Descargando toda la informacion de los datos de los formulario Zpo00Screening");
-        List<Zpo00Screening> zpo00Screenings = zpo00ScreeningService.getZpo00Screening();
+    List<ZpoScreening> getZpo00Screenings() {
+        logger.info("Descargando toda la informacion de los datos de los formulario ZpoScreening");
+        List<ZpoScreening> zpo00Screenings = zpo00ScreeningService.getZpo00Screening();
         if (zpo00Screenings == null){
             logger.debug("Nulo");
         }
@@ -49,9 +49,9 @@ public class Zpo00ScreeningController {
      */
     @RequestMapping(value = "zpo00Screenings/{username}", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    List<Zpo00Screening> getZpo00Screenings(@PathVariable String username) {
-        logger.info("Descargando toda la informacion de los datos de los formulario Zpo00Screening para el usuario " +username);
-        List<Zpo00Screening> zpo00Screenings = zpo00ScreeningService.getZpo00ScreeningByUser(username);
+    List<ZpoScreening> getZpo00Screenings(@PathVariable String username) {
+        logger.info("Descargando toda la informacion de los datos de los formulario ZpoScreening para el usuario " +username);
+        List<ZpoScreening> zpo00Screenings = zpo00ScreeningService.getZpo00ScreeningByUser(username);
         if (zpo00Screenings == null){
             logger.debug("Nulo");
         }
@@ -61,19 +61,19 @@ public class Zpo00ScreeningController {
 
     /**
      * Acepta una solicitud POST con un par�metro JSON
-     * @param envio Objeto serializado de Zpo00Screening
+     * @param envio Objeto serializado de ZpoScreening
      * @return String con el resultado
      */
     @RequestMapping(value = "zpo00Screenings", method = RequestMethod.POST, consumes = "application/json")
-    public @ResponseBody String saveZpo00Screenings(@RequestBody Zpo00Screening[] envio) {
+    public @ResponseBody String saveZpo00Screenings(@RequestBody ZpoScreening[] envio) {
         logger.debug("Insertando/Actualizando formularios Zpo00Screenings");
         if (envio == null){
             logger.debug("Nulo");
             return "No recibi nada!";
         }
         else{
-            List<Zpo00Screening> zpo00Screenings = Arrays.asList(envio);
-            for (Zpo00Screening zpo00Screening : zpo00Screenings){
+            List<ZpoScreening> zpo00Screenings = Arrays.asList(envio);
+            for (ZpoScreening zpo00Screening : zpo00Screenings){
                 zpo00ScreeningService.saveZpo00Screening(zpo00Screening);
             }
         }
