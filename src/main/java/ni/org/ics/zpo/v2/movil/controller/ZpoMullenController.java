@@ -30,22 +30,7 @@ public class ZpoMullenController {
     public @ResponseBody
     List<ZpoMullen> getZpoMullens() {
         logger.info("Descargando toda la informacion de los datos de los formularios Mullen");
-        List<ZpoMullen> zpoMullens = zpoMullenService.getZpoMullen();
-        if (zpoMullens == null){
-            logger.debug("Nulo");
-        }
-        return zpoMullens;
-    }
-
-    /**
-     * Acepta una solicitud GET para JSON
-     * @return JSON
-     */
-    @RequestMapping(value = "zpoMullens/{username}", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody
-    List<ZpoMullen> getZpoMullens(@PathVariable String username) {
-        logger.info("Descargando toda la informacion de los datos de los formularios ZpoMullen para el usuario " +username);
-        List<ZpoMullen> zpoMullens = zpoMullenService.getZpoMullenByUser(username);
+        List<ZpoMullen> zpoMullens = zpoMullenService.getZpoMullens();
         if (zpoMullens == null){
             logger.debug("Nulo");
         }

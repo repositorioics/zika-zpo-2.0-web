@@ -25,23 +25,12 @@ public class ZpoMullenService {
      * @return una lista de ZpoMullen
      */
     @SuppressWarnings("unchecked")
-    public List<ZpoMullen> getZpoMullen(){
+    public List<ZpoMullen> getZpoMullens(){
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM ZpoMullen ");
+        Query query = session.createQuery("FROM ZpoMullen where pasive = '0' ");
         return query.list();
     }
 
-    /**
-     * Retorna todos los formularios ZpoMullen
-     * @return una lista de ZpoMullen
-     */
-    @SuppressWarnings("unchecked")
-    public List<ZpoMullen> getZpoMullenByUser(String username){
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM ZpoMullen zpoM where zpoM.pasive = '0' and zpoM.recordId in (select zpo00.recordId from Zpo00Screening zpo00 where zpo00.pasive = '0')");
-        //query.setParameter("usuarioactual",username);
-        return query.list();
-    }
 
     /**
      * Retorna un formulario ZpoMullen
