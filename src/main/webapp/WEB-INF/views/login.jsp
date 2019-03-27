@@ -12,7 +12,7 @@
 <body class="login">
 	<!-- BEGIN LOGO -->
 	<div class="logo hidden-xs">
-		<spring:url value="/resources/img/logo-144.png" var="logo" />
+		<spring:url value="/resources/img/logo-zika-infection.png" var="logo" />
 		<img src="${logo}" alt="<spring:message code="login.page" />" />
 	</div>
 	<div class="logo hidden-sm hidden-md hidden-lg">
