@@ -16,7 +16,7 @@
 		<img src="${logo}" alt="<spring:message code="login.page" />" />
 	</div>
 	<div class="logo hidden-sm hidden-md hidden-lg">
-		<spring:url value="/resources/img/logo-72.png" var="logo" />
+		<spring:url value="/resources/img/logo-zika-infection-72.png" var="logo" />
 		<img src="${logo}" alt="<spring:message code="login.page" />" />
 	</div>
 	<!-- END LOGO -->
