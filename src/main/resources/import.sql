@@ -92,8 +92,8 @@ INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'pass.updated'
 INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'password.repeat', 'Repita la contrasena','0');
 INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'Pattern.password.format', 'Al menos 8 caracteres combinando mayusculas, minusculas, numeros y caracteres especiales','0');
 /*Plantilla*/
-INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'heading', 'ESTUDIO DE LOS EFECTOS DEL ZIKA EN EL EMBARAZO','0');
-INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'title', 'ZPO','0');
+INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'heading', 'ESTUDIO DE TRANSMISION MATERNO-FETAL DEL VIRUS ZIKA Y SUS COMPLICACIONES','0');
+INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'title', 'ZPO 2.0','0');
 INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'footer', 'Instituto de Ciencias Sostenibles','0');
 /*pagina principal*/
 INSERT INTO `messages` (`messageKey`, `es`, `catPasive`) VALUES ( 'dashboard', 'Panel de control','0');
