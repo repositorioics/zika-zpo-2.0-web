@@ -107,100 +107,111 @@ public class EditarDatosService {
      */
     public int updateProperty(String tabla, String evento, String id, String propiedad, String valor, boolean setNull, String actorId) throws Exception {
         Connection connection = getConnection();
+        Statement statement = null;
+        ResultSet resultSet = null;
         int registros = 0;
-        int resultado = 0;
-        StringBuilder sbUpdate = null;
-        String nombreCampoId = "record_id", nombreCampoEvento = "event_name";
 
-        if (tabla.equalsIgnoreCase("zp_reporte_us_recepcion") || tabla.equalsIgnoreCase("zp_reporte_us_salida")) {
-            nombreCampoId = "codigo";
-            nombreCampoEvento = "evento";
-        }else if(tabla.equalsIgnoreCase("zp_cons_recepcion") || tabla.equalsIgnoreCase("zp_cons_salida")) {
-            nombreCampoId = "codigo";
-            nombreCampoEvento = "";
-        }else if (tabla.equalsIgnoreCase("zpo_datos_infante")){
-            nombreCampoEvento = "";
-        }
+        try {
+            int resultado = 0;
+            StringBuilder sbUpdate = null;
+            String nombreCampoId = "record_id", nombreCampoEvento = "event_name";
+
+            if (tabla.equalsIgnoreCase("zp_reporte_us_recepcion") || tabla.equalsIgnoreCase("zp_reporte_us_salida")) {
+                nombreCampoId = "codigo";
+                nombreCampoEvento = "evento";
+            } else if (tabla.equalsIgnoreCase("zp_cons_recepcion") || tabla.equalsIgnoreCase("zp_cons_salida")) {
+                nombreCampoId = "codigo";
+                nombreCampoEvento = "";
+            } else if (tabla.equalsIgnoreCase("zpo_datos_infante")) {
+                nombreCampoEvento = "";
+            }
 
         /*determinar los registros que se van a actualizar*/
-        StringBuilder sbSelect = new StringBuilder("select ");
-        sbSelect.append(propiedad);
-        if (!nombreCampoEvento.isEmpty())
-                sbSelect.append(", ").append (nombreCampoEvento);
+            StringBuilder sbSelect = new StringBuilder("select ");
+            sbSelect.append(propiedad);
+            if (!nombreCampoEvento.isEmpty())
+                sbSelect.append(", ").append(nombreCampoEvento);
 
-        sbSelect.append (" from ")
-                .append(tabla)
-                .append(" where ");
-
-        sbSelect.append(nombreCampoId).append(" = '").append(id).append("'");
-
-        if (evento!=null && !nombreCampoEvento.isEmpty())
-            sbSelect.append(" and ").append(nombreCampoEvento).append(" = '")
-                    .append(evento).append("'");
-
-        int type = getColumnType(tabla, propiedad, connection);
-
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sbSelect.toString());
-        while(resultSet.next()) {
-            //por cada registro armar update
-            sbUpdate = new StringBuilder("update ");
-            sbUpdate.append(tabla)
-                    .append(" set ")
-                    .append(propiedad)
-                    .append((setNull?" = null ":" = ? "))
+            sbSelect.append(" from ")
+                    .append(tabla)
                     .append(" where ");
 
-                    sbUpdate.append(nombreCampoId).append(" = '")
-                    .append(id).append("'");
+            sbSelect.append(nombreCampoId).append(" = '").append(id).append("'");
 
-            if (!nombreCampoEvento.isEmpty()) {
-                sbUpdate.append(" and ").append(nombreCampoEvento).append(" = '")
-                        .append(resultSet.getString(2)).append("'");
-            }
+            if (evento != null && !nombreCampoEvento.isEmpty())
+                sbSelect.append(" and ").append(nombreCampoEvento).append(" = '")
+                        .append(evento).append("'");
 
-            PreparedStatement pstm = connection.prepareStatement(sbUpdate.toString());
-            //dependiendo del tipo de dato, puede requerir tratamiento especial
-            if (!setNull) {
-                if (type == Types.VARCHAR)
-                    pstm.setString(1, valor);
-                else if (type == Types.CHAR)
-                    pstm.setString(1, String.valueOf(valor.charAt(0)));
-                else if (type == Types.DATE) {
-                    if (valor.trim().contains(" ")) {
-                        pstm.setDate(1, new java.sql.Date(DateUtil.StringToDate(valor, "dd/MM/yyyy").getTime()));
+            int type = getColumnType(tabla, propiedad, connection);
+
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sbSelect.toString());
+            while (resultSet.next()) {
+                //por cada registro armar update
+                sbUpdate = new StringBuilder("update ");
+                sbUpdate.append(tabla)
+                        .append(" set ")
+                        .append(propiedad)
+                        .append((setNull ? " = null " : " = ? "))
+                        .append(" where ");
+
+                sbUpdate.append(nombreCampoId).append(" = '")
+                        .append(id).append("'");
+
+                if (!nombreCampoEvento.isEmpty()) {
+                    sbUpdate.append(" and ").append(nombreCampoEvento).append(" = '")
+                            .append(resultSet.getString(2)).append("'");
+                }
+
+                PreparedStatement pstm = connection.prepareStatement(sbUpdate.toString());
+                //dependiendo del tipo de dato, puede requerir tratamiento especial
+                if (!setNull) {
+                    if (type == Types.VARCHAR)
+                        pstm.setString(1, valor);
+                    else if (type == Types.CHAR)
+                        pstm.setString(1, String.valueOf(valor.charAt(0)));
+                    else if (type == Types.DATE) {
+                        if (valor.trim().contains(" ")) {
+                            pstm.setDate(1, new java.sql.Date(DateUtil.StringToDate(valor, "dd/MM/yyyy").getTime()));
+                        }
+                    } else if (type == Types.TIMESTAMP) {
+                        if (valor.trim().contains(" ")) {
+                            pstm.setTimestamp(1, new Timestamp(DateUtil.StringToDate(valor, "dd/MM/yyyy HH:mm").getTime()));
+                        } else {
+                            pstm.setDate(1, new java.sql.Date(DateUtil.StringToDate(valor, "dd/MM/yyyy").getTime()));
+                        }
+                    } else if (type == Types.INTEGER)
+                        pstm.setInt(1, Integer.valueOf(valor));
+                    else if (type == Types.FLOAT || type == Types.REAL)
+                        pstm.setFloat(1, Float.valueOf(valor));
+                    else if (type == Types.DOUBLE) {
+                        pstm.setDouble(1, Double.valueOf(valor));
                     }
-                } else if (type == Types.TIMESTAMP) {
-                    if (valor.trim().contains(" ")) {
-                        pstm.setTimestamp(1, new Timestamp(DateUtil.StringToDate(valor, "dd/MM/yyyy HH:mm").getTime()));
-                    } else {
-                        pstm.setDate(1, new java.sql.Date(DateUtil.StringToDate(valor, "dd/MM/yyyy").getTime()));
-                    }
-                } else if (type == Types.INTEGER)
-                    pstm.setInt(1, Integer.valueOf(valor));
-                else if (type == Types.FLOAT || type == Types.REAL)
-                    pstm.setFloat(1, Float.valueOf(valor));
-                else if (type == Types.DOUBLE){
-                    pstm.setDouble(1, Double.valueOf(valor));
+                }
+
+                resultado = pstm.executeUpdate();
+                //si se actualizó el registro entonces registrar pistas de auditoria e incrementar contador de registros actualizados
+                if (resultado > 0) {
+                    registros++;
+                    AuditTrail auditTrail = new AuditTrail();
+                    auditTrail.setEntityId(id + "," + (nombreCampoEvento.isEmpty() ? "" : resultSet.getString(2)));
+                    auditTrail.setEntityName(tabla);
+                    auditTrail.setEntityClass("editardatos." + tabla);
+                    auditTrail.setEntityProperty(propiedad);
+                    auditTrail.setEntityPropertyNewValue((setNull ? null : valor));
+                    auditTrail.setEntityPropertyOldValue((resultSet.getObject(1) != null ? resultSet.getObject(1).toString() : null));
+                    auditTrail.setOperationType("UPDATE");
+                    auditTrail.setOperationDate(new Date());
+                    auditTrail.setUsername(actorId);
+                    auditTrailService.saveAuditTrail(auditTrail);
                 }
             }
-
-            resultado=pstm.executeUpdate();
-            //si se actualizó el registro entonces registrar pistas de auditoria e incrementar contador de registros actualizados
-            if (resultado>0){
-                registros++;
-                AuditTrail auditTrail = new AuditTrail();
-                auditTrail.setEntityId(id+","+(nombreCampoEvento.isEmpty()?"":resultSet.getString(2)));
-                auditTrail.setEntityName(tabla);
-                auditTrail.setEntityClass("editardatos." + tabla);
-                auditTrail.setEntityProperty(propiedad);
-                auditTrail.setEntityPropertyNewValue((setNull?null:valor));
-                auditTrail.setEntityPropertyOldValue((resultSet.getObject(1)!=null?resultSet.getObject(1).toString():null));
-                auditTrail.setOperationType("UPDATE");
-                auditTrail.setOperationDate(new Date());
-                auditTrail.setUsername(actorId);
-                auditTrailService.saveAuditTrail(auditTrail);
-            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (resultSet !=null) resultSet.close();
+            if (statement !=null) statement.close();
+            if (connection !=null) connection.close();
         }
         return registros;
     }
