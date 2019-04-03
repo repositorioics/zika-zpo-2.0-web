@@ -75,6 +75,7 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.recordId = recordId;
     }
 
+    @Id
     @Column(name = "event_name", nullable = false, length = 100)
     public String getEventName() {
         return eventName;
@@ -514,17 +515,27 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
 
     @Override
     public String toString() {
-        return this.recordId;
+        return "ZpoMullen{" +
+                "recordId='" + recordId + '\'' +
+                ", eventName='" + eventName + '\'' +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null) return false;
-        if (!(o instanceof ZpoMullen)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        ZpoMullen that = (ZpoMullen) o;
+        ZpoMullen zpoMullen = (ZpoMullen) o;
 
-        return (recordId.equals(that.recordId));
+        if (!recordId.equals( zpoMullen.recordId )) return false;
+        return eventName.equals( zpoMullen.eventName );
+    }
+
+    @Override
+    public int hashCode() {
+        int result = recordId.hashCode();
+        result = 31 * result + eventName.hashCode();
+        return result;
     }
 }
