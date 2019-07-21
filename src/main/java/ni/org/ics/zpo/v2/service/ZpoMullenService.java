@@ -35,7 +35,7 @@ public class ZpoMullenService {
     /**
      * Retorna un formulario ZpoMullen
      * @param recordId del ZpoMullen a retornar
-     * @return un ZpoMullen
+     * @return un ZpoMullenE
      */
     public ZpoMullen getZpoMullen(String recordId){
         Session session = sessionFactory.getCurrentSession();
