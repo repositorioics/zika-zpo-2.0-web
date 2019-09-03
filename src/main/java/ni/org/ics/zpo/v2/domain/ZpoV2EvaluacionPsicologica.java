@@ -12,7 +12,7 @@ import java.util.Date;
  * @author ics
  */
 @Entity
-@Table(name = "zpo_eval_pscicologica", catalog = "zika_zpo_v2")
+@Table(name = "zpo_eval_psicologica", catalog = "zika_zpo_v2")
 public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditable {
 
     private String recordId;
