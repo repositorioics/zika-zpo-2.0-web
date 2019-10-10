@@ -48,7 +48,7 @@ public class ZpoV2EvalPsicologicaController {
      * @return String con el resultado
      */
     @RequestMapping(value = "saveEvalPsicologicas", method = RequestMethod.POST, consumes = "application/json")
-    public @ResponseBody String saveZpoIndCuidadoFams(@RequestBody ZpoV2EvaluacionPsicologica[] envio) {
+    public @ResponseBody String saveZpoEvalPsicologicas(@RequestBody ZpoV2EvaluacionPsicologica[] envio) {
         logger.debug("Insertando/Actualizando Evaluacion Psiocologica");
         if (envio == null){
             logger.debug("Nulo");

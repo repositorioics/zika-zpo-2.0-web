@@ -1,9 +1,7 @@
 package ni.org.ics.zpo.v2.movil.controller;
 
 import ni.org.ics.zpo.v2.domain.ZpoV2EdadesEtapas;
-import ni.org.ics.zpo.v2.domain.ZpoV2InfantOphthalmologicEvaluation;
 import ni.org.ics.zpo.v2.service.ZpoV2EdadesEtapasService;
-import ni.org.ics.zpo.v2.service.ZpoV2InfantOphthalmologicEvalService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

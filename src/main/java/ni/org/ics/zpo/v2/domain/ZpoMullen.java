@@ -2,10 +2,7 @@ package ni.org.ics.zpo.v2.domain;
 
 import ni.org.ics.zpo.v2.domain.audit.Auditable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -20,53 +17,42 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
     private String sexMsel;
     private String raNameMsel;
     private String visitMonthsMsel;
-    private String visProbMsel;
-    private String desVisProbMsel;
-    private String hearProbMsel;
-    private String desHearProbMsel;
     private Date testingDateMsel;
-    private Date eddMsel;
-    private String adjAgeMsel;
-    private Date actDobMsel;
+    private Integer adjAgeMsel;//edad infante
+    private Date actDobMsel;//fecha nac
     private String gmRaw;
-    private String gmTScore;
-    private String gmBoe;
+    private Integer gmTScore;
     private String gmPerRank;
     private String gmDesCat;
     private String gmAgeEqu;
     private String vrRaw;
-    private String vrTScore;
-    private String vrBoe;
+    private Integer vrTScore;
     private String vrPerRank;
     private String vrDesCat;
     private String vrAgeEqu;
     private String fmRaw;
-    private String fmTScore;
-    private String fmBoe;
+    private Integer fmTScore;
     private String fmPerRank;
     private String fmDesCat;
     private String fmAgeEqu;
     private String rlRaw;
     private String rlTScore;
-    private String rlBoe;
     private String rlPerRank;
     private String rlDesCat;
     private String rlAgeEqu;
     private String elRaw;
-    private String elTScore;
-    private String elBoe;
+    private Integer elTScore;
     private String elPerRank;
     private String elDesCat;
     private String elAgeEqu;
-    private String cognTScoreSum;
+    private Integer cognTScoreSum;
     private String elcStandScore;
-    private String elcBoe;
     private String elcPerRank;
     private String elcDesCat;
     private String mselComment;
 
     @Id
-    @Column(name = "cod_nino_msel_3m", nullable = false, length = 25)
+    @Column(name = "cod_nino_msel", nullable = false, length = 25)
     public String getRecordId() {
         return recordId;
     }
@@ -112,42 +98,6 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.visitMonthsMsel = visitMonthsMsel;
     }
 
-    @Column(name = "vis_prob_msel", length = 1)
-    public String getVisProbMsel() {
-        return visProbMsel;
-    }
-
-    public void setVisProbMsel(String visProbMsel) {
-        this.visProbMsel = visProbMsel;
-    }
-
-    @Column(name = "des_vis_prob_msel", length = 100)
-    public String getDesVisProbMsel() {
-        return desVisProbMsel;
-    }
-
-    public void setDesVisProbMsel(String desVisProbMsel) {
-        this.desVisProbMsel = desVisProbMsel;
-    }
-
-    @Column(name = "hear_prob_msel", length = 1)
-    public String getHearProbMsel() {
-        return hearProbMsel;
-    }
-
-    public void setHearProbMsel(String hearProbMsel) {
-        this.hearProbMsel = hearProbMsel;
-    }
-
-    @Column(name = "des_hear_prob_msel", length = 100)
-    public String getDesHearProbMsel() {
-        return desHearProbMsel;
-    }
-
-    public void setDesHearProbMsel(String desHearProbMsel) {
-        this.desHearProbMsel = desHearProbMsel;
-    }
-
     @Column(name = "testing_date_msel")
     public Date getTestingDateMsel() {
         return testingDateMsel;
@@ -157,25 +107,17 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.testingDateMsel = testingDateMsel;
     }
 
-    @Column(name = "edd_msel")
-    public Date getEddMsel() {
-        return eddMsel;
-    }
-
-    public void setEddMsel(Date eddMsel) {
-        this.eddMsel = eddMsel;
-    }
-
-    @Column(name = "adj_age_msel", length = 2)
-    public String getAdjAgeMsel() {
+    @Column(name = "age_at_testing_msel", length = 2)
+    public Integer getAdjAgeMsel() {
         return adjAgeMsel;
     }
 
-    public void setAdjAgeMsel(String adjAgeMsel) {
+    public void setAdjAgeMsel(Integer adjAgeMsel) {
         this.adjAgeMsel = adjAgeMsel;
     }
 
-    @Column(name = "act_dob_msel")
+    @Basic
+    @Column(name = "child_dob_msel")
     public Date getActDobMsel() {
         return actDobMsel;
     }
@@ -193,23 +135,15 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.gmRaw = gmRaw;
     }
 
-    @Column(name = "gm_t_score", length = 4)
-    public String getGmTScore() {
+    @Column(name = "gm_t_score")
+    public Integer getGmTScore() {
         return gmTScore;
     }
 
-    public void setGmTScore(String gmTScore) {
+    public void setGmTScore(Integer gmTScore) {
         this.gmTScore = gmTScore;
     }
 
-    @Column(name = "gm_boe", length = 4)
-    public String getGmBoe() {
-        return gmBoe;
-    }
-
-    public void setGmBoe(String gmBoe) {
-        this.gmBoe = gmBoe;
-    }
 
     @Column(name = "gm_per_rank", length = 4)
     public String getGmPerRank() {
@@ -220,7 +154,7 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.gmPerRank = gmPerRank;
     }
 
-    @Column(name = "gm_des_cat", length = 4)
+    @Column(name = "gm_des_cat", length = 1)
     public String getGmDesCat() {
         return gmDesCat;
     }
@@ -247,22 +181,13 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.vrRaw = vrRaw;
     }
 
-    @Column(name = "vr_t_score", length = 4)
-    public String getVrTScore() {
+    @Column(name = "vr_t_score")
+    public Integer getVrTScore() {
         return vrTScore;
     }
 
-    public void setVrTScore(String vrTScore) {
+    public void setVrTScore(Integer vrTScore) {
         this.vrTScore = vrTScore;
-    }
-
-    @Column(name = "vr_boe", length = 4)
-    public String getVrBoe() {
-        return vrBoe;
-    }
-
-    public void setVrBoe(String vrBoe) {
-        this.vrBoe = vrBoe;
     }
 
     @Column(name = "vr_per_rank", length = 4)
@@ -274,7 +199,7 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.vrPerRank = vrPerRank;
     }
 
-    @Column(name = "vr_des_cat", length = 4)
+    @Column(name = "vr_des_cat", length = 1)
     public String getVrDesCat() {
         return vrDesCat;
     }
@@ -301,22 +226,13 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.fmRaw = fmRaw;
     }
 
-    @Column(name = "fm_t_score", length = 4)
-    public String getFmTScore() {
+    @Column(name = "fm_t_score")
+    public Integer getFmTScore() {
         return fmTScore;
     }
 
-    public void setFmTScore(String fmTScore) {
+    public void setFmTScore(Integer fmTScore) {
         this.fmTScore = fmTScore;
-    }
-
-    @Column(name = "fm_boe", length = 4)
-    public String getFmBoe() {
-        return fmBoe;
-    }
-
-    public void setFmBoe(String fmBoe) {
-        this.fmBoe = fmBoe;
     }
 
     @Column(name = "fm_per_rank", length = 4)
@@ -328,7 +244,7 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.fmPerRank = fmPerRank;
     }
 
-    @Column(name = "fm_des_cat", length = 4)
+    @Column(name = "fm_des_cat", length = 1)
     public String getFmDesCat() {
         return fmDesCat;
     }
@@ -364,15 +280,6 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.rlTScore = rlTScore;
     }
 
-    @Column(name = "rl_boe", length = 4)
-    public String getRlBoe() {
-        return rlBoe;
-    }
-
-    public void setRlBoe(String rlBoe) {
-        this.rlBoe = rlBoe;
-    }
-
     @Column(name = "rl_per_rank", length = 4)
     public String getRlPerRank() {
         return rlPerRank;
@@ -382,7 +289,7 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.rlPerRank = rlPerRank;
     }
 
-    @Column(name = "rl_des_cat", length = 4)
+    @Column(name = "rl_des_cat", length = 1)
     public String getRlDesCat() {
         return rlDesCat;
     }
@@ -409,22 +316,13 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.elRaw = elRaw;
     }
 
-    @Column(name = "el_t_score", length = 4)
-    public String getElTScore() {
+    @Column(name = "el_t_score")
+    public Integer getElTScore() {
         return elTScore;
     }
 
-    public void setElTScore(String elTScore) {
+    public void setElTScore(Integer elTScore) {
         this.elTScore = elTScore;
-    }
-
-    @Column(name = "el_boe", length = 4)
-    public String getElBoe() {
-        return elBoe;
-    }
-
-    public void setElBoe(String elBoe) {
-        this.elBoe = elBoe;
     }
 
     @Column(name = "el_per_rank", length = 4)
@@ -436,7 +334,7 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.elPerRank = elPerRank;
     }
 
-    @Column(name = "el_des_cat", length = 4)
+    @Column(name = "el_des_cat", length = 1)
     public String getElDesCat() {
         return elDesCat;
     }
@@ -454,12 +352,13 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.elAgeEqu = elAgeEqu;
     }
 
-    @Column(name = "cogn_t_score_sum", length = 4)
-    public String getCognTScoreSum() {
+
+    @Column(name = "cogn_t_score_sum")
+    public Integer getCognTScoreSum() {
         return cognTScoreSum;
     }
 
-    public void setCognTScoreSum(String cognTScoreSum) {
+    public void setCognTScoreSum(Integer cognTScoreSum) {
         this.cognTScoreSum = cognTScoreSum;
     }
 
@@ -472,15 +371,6 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.elcStandScore = elcStandScore;
     }
 
-    @Column(name = "elc_boe", length = 4)
-    public String getElcBoe() {
-        return elcBoe;
-    }
-
-    public void setElcBoe(String elcBoe) {
-        this.elcBoe = elcBoe;
-    }
-
     @Column(name = "elc_per_rank", length = 4)
     public String getElcPerRank() {
         return elcPerRank;
@@ -490,7 +380,7 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.elcPerRank = elcPerRank;
     }
 
-    @Column(name = "elc_des_cat", length = 4)
+    @Column(name = "elc_des_cat", length = 1)
     public String getElcDesCat() {
         return elcDesCat;
     }
@@ -499,7 +389,7 @@ public class ZpoMullen extends BaseMetaData implements Auditable {
         this.elcDesCat = elcDesCat;
     }
 
-    @Column(name = "msel_comment", length = 4)
+    @Column(name = "msel_comment", length = 100)
     public String getMselComment() {
         return mselComment;
     }

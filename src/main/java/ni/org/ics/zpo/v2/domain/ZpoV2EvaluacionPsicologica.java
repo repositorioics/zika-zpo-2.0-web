@@ -61,7 +61,7 @@ public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditabl
     private String panicoPsych;
     private String inquietudPsych;
     private Integer sintomasPuntajePsych;
-    private Integer scoreDepressionPsych;
+    private Float scoreDepressionPsych;
     private String examinadorPsych;
 
 
@@ -482,13 +482,14 @@ public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditabl
     }
 
     @Column(name = "score_depression_psych", nullable = false)
-    public Integer getScoreDepressionPsych() {
+    public Float getScoreDepressionPsych() {
         return scoreDepressionPsych;
     }
 
-    public void setScoreDepressionPsych(Integer scoreDepressionPsych) {
+    public void setScoreDepressionPsych(Float scoreDepressionPsych) {
         this.scoreDepressionPsych = scoreDepressionPsych;
     }
+
 
     @Column(name = "examinador_psych", nullable = false, length = 100)
     public String getExaminadorPsych() {
@@ -529,4 +530,6 @@ public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditabl
         result = 31 * result + eventName.hashCode();
         return result;
     }
+
+
 }

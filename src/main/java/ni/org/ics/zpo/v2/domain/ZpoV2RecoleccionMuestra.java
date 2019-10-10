@@ -19,7 +19,19 @@ public class ZpoV2RecoleccionMuestra extends BaseMetaData implements Auditable {
     private static final long serialVersionUID = 1L;
     private String recordId;
     private String eventName;
-    private Date bscDov;
+    private Date bloodTodaysDate;
+    private String bloodSampleCollected;
+    private String bloodWhichPerson;
+    private Date bloodMomSampleDate;
+    private Integer bloodMomTubes;
+    private String bloodMomType;
+    private Date bloodChildSampleDate;
+    private Integer bloodChildTubes;
+    private String bloodChildType;
+    private String bloodPersonnel;
+
+
+    /*private Date bscDov;
     private String bscVisit;
     private String bscMatBldCol1;
     private String bscMatBldId1;
@@ -31,7 +43,7 @@ public class ZpoV2RecoleccionMuestra extends BaseMetaData implements Auditable {
     private String bscMatBldRsn2;
     private String bscMatBldRsnOther2;
     private Double bscMatBldVol2;
-    private String bscPhlebotomist;
+    private String bscPhlebotomist;*/
 
     @Id
     @Column(name = "record_id", nullable = false, length = 25)
@@ -53,121 +65,97 @@ public class ZpoV2RecoleccionMuestra extends BaseMetaData implements Auditable {
         this.eventName = eventName;
     }
 
-    @Column(name = "bsc_dov", nullable = true)
-    public Date getBscDov() {
-        return bscDov;
+
+    @Column(name = "blood_todays_date")
+    public Date getBloodTodaysDate() {
+        return bloodTodaysDate;
     }
 
-    public void setBscDov(Date bscDov) {
-        this.bscDov = bscDov;
+    public void setBloodTodaysDate(Date bloodTodaysDate) {
+        this.bloodTodaysDate = bloodTodaysDate;
     }
 
-    @Column(name = "bsc_visit", nullable = false, length = 1)
-    public String getBscVisit() {
-        return bscVisit;
+    @Column(name = "blood_sample_collected", length = 1)
+    public String getBloodSampleCollected() {
+        return bloodSampleCollected;
     }
 
-    public void setBscVisit(String bscVisit) {
-        this.bscVisit = bscVisit;
+    public void setBloodSampleCollected(String bloodSampleCollected) {
+        this.bloodSampleCollected = bloodSampleCollected;
     }
 
-    @Column(name = "bsc_mat_bld_col_1", nullable = true, length = 1)
-    public String getBscMatBldCol1() {
-        return bscMatBldCol1;
+    @Column(name = "blood_which_person", length = 1)
+    public String getBloodWhichPerson() {
+        return bloodWhichPerson;
     }
 
-    public void setBscMatBldCol1(String bscMatBldCol1) {
-        this.bscMatBldCol1 = bscMatBldCol1;
+    public void setBloodWhichPerson(String bloodWhichPerson) {
+        this.bloodWhichPerson = bloodWhichPerson;
     }
 
-    @Column(name = "bsc_mat_bld_id_1", nullable = true, length = 25)
-    public String getBscMatBldId1() {
-        return bscMatBldId1;
+    @Column(name = "blood_mom_sample_date")
+    public Date getBloodMomSampleDate() {
+        return bloodMomSampleDate;
     }
 
-    public void setBscMatBldId1(String bscMatBldId1) {
-        this.bscMatBldId1 = bscMatBldId1;
+    public void setBloodMomSampleDate(Date bloodMomSampleDate) {
+        this.bloodMomSampleDate = bloodMomSampleDate;
     }
 
-    @Column(name = "bsc_mat_bld_rsn_1", nullable = true, length = 2)
-    public String getBscMatBldRsn1() {
-        return bscMatBldRsn1;
+
+    @Column(name = "blood_mom_tubes")
+    public Integer getBloodMomTubes() {
+        return bloodMomTubes;
     }
 
-    public void setBscMatBldRsn1(String bscMatBldRsn1) {
-        this.bscMatBldRsn1 = bscMatBldRsn1;
+    public void setBloodMomTubes(Integer bloodMomTubes) {
+        this.bloodMomTubes = bloodMomTubes;
     }
 
-    @Column(name = "bsc_mat_bld_rsn_other_1", nullable = true, length = 250)
-    public String getBscMatBldRsnOther1() {
-        return bscMatBldRsnOther1;
+    @Column(name = "blood_mom_type", length = 50)
+    public String getBloodMomType() {
+        return bloodMomType;
     }
 
-    public void setBscMatBldRsnOther1(String bscMatBldRsnOther1) {
-        this.bscMatBldRsnOther1 = bscMatBldRsnOther1;
+    public void setBloodMomType(String bloodMomType) {
+        this.bloodMomType = bloodMomType;
     }
 
-    @Column(name = "bsc_mat_bld_vol_1", nullable = true)
-    public Double getBscMatBldVol1() {
-        return bscMatBldVol1;
+    @Column(name = "blood_child_sample_date")
+    public Date getBloodChildSampleDate() {
+        return bloodChildSampleDate;
     }
 
-    public void setBscMatBldVol1(Double bscMatBldVol1) {
-        this.bscMatBldVol1 = bscMatBldVol1;
+    public void setBloodChildSampleDate(Date bloodChildSampleDate) {
+        this.bloodChildSampleDate = bloodChildSampleDate;
     }
 
-    @Column(name = "bsc_mat_bld_col_2", nullable = true, length = 1)
-    public String getBscMatBldCol2() {
-        return bscMatBldCol2;
+
+    @Column(name = "blood_child_tubes")
+    public Integer getBloodChildTubes() {
+        return bloodChildTubes;
     }
 
-    public void setBscMatBldCol2(String bscMatBldCol2) {
-        this.bscMatBldCol2 = bscMatBldCol2;
+    public void setBloodChildTubes(Integer bloodChildTubes) {
+        this.bloodChildTubes = bloodChildTubes;
     }
 
-    @Column(name = "bsc_mat_bld_id_2", nullable = true, length = 25)
-    public String getBscMatBldId2() {
-        return bscMatBldId2;
+    @Column(name = "blood_child_type", length = 50)
+    public String getBloodChildType() {
+        return bloodChildType;
     }
 
-    public void setBscMatBldId2(String bscMatBldId2) {
-        this.bscMatBldId2 = bscMatBldId2;
+    public void setBloodChildType(String bloodChildType) {
+        this.bloodChildType = bloodChildType;
     }
 
-    @Column(name = "bsc_mat_bld_rsn_2", nullable = true, length = 2)
-    public String getBscMatBldRsn2() {
-        return bscMatBldRsn2;
+    @Column(name = "blood_personnel", length =100)
+    public String getBloodPersonnel() {
+        return bloodPersonnel;
     }
 
-    public void setBscMatBldRsn2(String bscMatBldRsn2) {
-        this.bscMatBldRsn2 = bscMatBldRsn2;
-    }
-
-    @Column(name = "bsc_mat_bld_rsn_other_2", nullable = true, length = 250)
-    public String getBscMatBldRsnOther2() {
-        return bscMatBldRsnOther2;
-    }
-
-    public void setBscMatBldRsnOther2(String bscMatBldRsnOther2) {
-        this.bscMatBldRsnOther2 = bscMatBldRsnOther2;
-    }
-
-    @Column(name = "bsc_mat_bld_vol_2", nullable = true)
-    public Double getBscMatBldVol2() {
-        return bscMatBldVol2;
-    }
-
-    public void setBscMatBldVol2(Double bscMatBldVol2) {
-        this.bscMatBldVol2 = bscMatBldVol2;
-    }
-
-    @Column(name = "bsc_phlebotomist", nullable = true, length = 2)
-    public String getBscPhlebotomist() {
-        return bscPhlebotomist;
-    }
-
-    public void setBscPhlebotomist(String bscPhlebotomist) {
-        this.bscPhlebotomist = bscPhlebotomist;
+    public void setBloodPersonnel(String bloodPersonnel) {
+        this.bloodPersonnel = bloodPersonnel;
     }
 
     @Override
