@@ -361,7 +361,7 @@ public class ZpoV2ExamenFisicoInfante extends BaseMetaData implements Auditable 
         this.childExamRightEyeFinds = childExamRightEyeFinds;
     }
 
-    @Column(name = "child_exam_referral", length = 1)
+    @Column(name = "child_exam_referral", length = 2)
     public String getChildExamReferral() {
         return childExamReferral;
     }

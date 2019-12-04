@@ -109,7 +109,7 @@ public class ZpoV2CuestSaludInfantil extends BaseMetaData implements Auditable {
         this.fechaHoyNino = fechaHoyNino;
     }
 
-    @Column(name = "peso_nacer_nino", length = 5)
+    @Column(name = "peso_nacer_nino", length = 10)
     public String getPesoNacerNino() {
         return pesoNacerNino;
     }
@@ -118,7 +118,7 @@ public class ZpoV2CuestSaludInfantil extends BaseMetaData implements Auditable {
         this.pesoNacerNino = pesoNacerNino;
     }
 
-    @Column(name = "talla_nacer_nino", length = 5)
+    @Column(name = "talla_nacer_nino", length = 10)
     public String getTallaNacerNino() {
         return tallaNacerNino;
     }
@@ -127,7 +127,7 @@ public class ZpoV2CuestSaludInfantil extends BaseMetaData implements Auditable {
         this.tallaNacerNino = tallaNacerNino;
     }
 
-    @Column(name = "circunferencia_nacer_nino", length = 5)
+    @Column(name = "circunferencia_nacer_nino", length = 20)
     public String getCircunferenciaNacerNino() {
         return circunferenciaNacerNino;
     }

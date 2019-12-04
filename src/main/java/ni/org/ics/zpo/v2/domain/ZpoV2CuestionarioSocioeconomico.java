@@ -271,7 +271,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.persona1NombreSes = persona1NombreSes;
     }
 
-    @Column(name = "persona_1_edad_ses", length = 2)
+    @Column(name = "persona_1_edad_ses", length = 25)
     public String getPersona1EdadSes() {
         return persona1EdadSes;
     }
@@ -307,7 +307,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.persona2NombreSes = persona2NombreSes;
     }
 
-    @Column(name = "persona_2_edad_ses", length = 2)
+    @Column(name = "persona_2_edad_ses", length = 25)
     public String getPersona2EdadSes() {
         return persona2EdadSes;
     }
@@ -343,7 +343,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.persona3NombreSes = persona3NombreSes;
     }
 
-    @Column(name = "persona_3_edad_ses", length = 2)
+    @Column(name = "persona_3_edad_ses", length = 25)
     public String getPersona3EdadSes() {
         return persona3EdadSes;
     }
@@ -379,7 +379,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.persona4NombreSes = persona4NombreSes;
     }
 
-    @Column(name = "persona_4_edad_ses", length = 2)
+    @Column(name = "persona_4_edad_ses", length = 25)
     public String getPersona4EdadSes() {
         return persona4EdadSes;
     }
@@ -415,7 +415,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.persona5NombreSes = persona5NombreSes;
     }
 
-    @Column(name = "persona_5_edad_ses", length = 2)
+    @Column(name = "persona_5_edad_ses", length = 25)
     public String getPersona5EdadSes() {
         return persona5EdadSes;
     }
@@ -451,7 +451,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.persona6NombreSes = persona6NombreSes;
     }
 
-    @Column(name = "persona_6_edad_ses", length = 2)
+    @Column(name = "persona_6_edad_ses", length = 25)
     public String getPersona6EdadSes() {
         return persona6EdadSes;
     }
@@ -487,7 +487,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.persona7NombreSes = persona7NombreSes;
     }
 
-    @Column(name = "persona_7_edad_ses", length = 2)
+    @Column(name = "persona_7_edad_ses", length = 25)
     public String getPersona7EdadSes() {
         return persona7EdadSes;
     }
@@ -523,7 +523,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.persona8NombreSes = persona8NombreSes;
     }
 
-    @Column(name = "persona_8_edad_ses", length = 2)
+    @Column(name = "persona_8_edad_ses", length = 25)
     public String getPersona8EdadSes() {
         return persona8EdadSes;
     }

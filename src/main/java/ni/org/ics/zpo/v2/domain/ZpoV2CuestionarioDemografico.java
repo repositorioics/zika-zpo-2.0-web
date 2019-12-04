@@ -153,7 +153,7 @@ public class ZpoV2CuestionarioDemografico extends BaseMetaData implements Audita
         this.direcBarrioDemogr = direcBarrioDemogr;
     }
 
-    @Column(name = "direccion_exacta_demogr", nullable = false, length = 100)
+    @Column(name = "direccion_exacta_demogr", nullable = false, length = 500)
     public String getDirecExactaDemogr() {
         return direcExactaDemogr;
     }
