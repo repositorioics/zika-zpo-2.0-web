@@ -18,7 +18,7 @@ public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditabl
     private String recordId;
     private String eventName;
     private Date fechaPsych;
-    private String trabajarPsych;
+   /* private String trabajarPsych;
     private String cocinarPsych;
     private String mercadoPsych;
     private String banarHijoPsych;
@@ -34,7 +34,7 @@ public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditabl
     private String ayudarAmigasPsych;
     private String compartirInfoPsych;
     private String tareasSaludPsych;
-    private Integer funcionamientoPuntajePsych;
+    private Integer funcionamientoPuntajePsych;*/
     private String sinEnergiaPsych;
     private String culparseMismaPsych;
     private String llorarPsych;
@@ -60,8 +60,8 @@ public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditabl
     private String dolorCabezaPsych;
     private String panicoPsych;
     private String inquietudPsych;
-    private Integer sintomasPuntajePsych;
-    private Float scoreDepressionPsych;
+    private Double sintomasPuntajePsych;
+    private Double scoreDepressionPsych;
     private String examinadorPsych;
 
 
@@ -92,159 +92,6 @@ public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditabl
 
     public void setFechaPsych(Date fechaPsych) {
         this.fechaPsych = fechaPsych;
-    }
-
-    @Column(name = "trabajar_psych", nullable = false, length = 1)
-    public String getTrabajarPsych() {
-        return trabajarPsych;
-    }
-
-    public void setTrabajarPsych(String trabajarPsych) {
-        this.trabajarPsych = trabajarPsych;
-    }
-
-    @Column(name = "cocinar_psych", nullable = false, length = 1)
-    public String getCocinarPsych() {
-        return cocinarPsych;
-    }
-
-    public void setCocinarPsych(String cocinarPsych) {
-        this.cocinarPsych = cocinarPsych;
-    }
-
-    @Column(name = "mercado_psych", nullable = false, length = 1)
-    public String getMercadoPsych() {
-        return mercadoPsych;
-    }
-
-    public void setMercadoPsych(String mercadoPsych) {
-        this.mercadoPsych = mercadoPsych;
-    }
-
-    @Column(name = "banar_hijo_psych", nullable = false, length = 1)
-    public String getBanarHijoPsych() {
-        return banarHijoPsych;
-    }
-
-    public void setBanarHijoPsych(String banarHijoPsych) {
-        this.banarHijoPsych = banarHijoPsych;
-    }
-
-    @Column(name = "vestir_hijo_psych", nullable = false, length = 1)
-    public String getVestirHijoPsych() {
-        return vestirHijoPsych;
-    }
-
-    public void setVestirHijoPsych(String vestirHijoPsych) {
-        this.vestirHijoPsych = vestirHijoPsych;
-    }
-
-    @Column(name = "limpiar_psych", nullable = false, length = 1)
-    public String getLimpiarPsych() {
-        return limpiarPsych;
-    }
-
-    public void setLimpiarPsych(String limpiarPsych) {
-        this.limpiarPsych = limpiarPsych;
-    }
-
-    @Column(name = "lavar_ropa_psych", nullable = false, length = 1)
-    public String getLavarRopaPsych() {
-        return lavarRopaPsych;
-    }
-
-    public void setLavarRopaPsych(String lavarRopaPsych) {
-        this.lavarRopaPsych = lavarRopaPsych;
-    }
-
-    @Column(name = "banarse_psych", nullable = false, length = 1)
-    public String getBanarsePsych() {
-        return banarsePsych;
-    }
-
-    public void setBanarsePsych(String banarsePsych) {
-        this.banarsePsych = banarsePsych;
-    }
-
-    @Column(name = "cuidar_cabello_psych", nullable = false, length = 1)
-    public String getCuidarCabelloPsych() {
-        return cuidarCabelloPsych;
-    }
-
-    public void setCuidarCabelloPsych(String cuidarCabelloPsych) {
-        this.cuidarCabelloPsych = cuidarCabelloPsych;
-    }
-
-    @Column(name = "atender_visita_psych", nullable = false, length = 1)
-    public String getAtenderVisitaPsych() {
-        return atenderVisitaPsych;
-    }
-
-    public void setAtenderVisitaPsych(String atenderVisitaPsych) {
-        this.atenderVisitaPsych = atenderVisitaPsych;
-    }
-
-    @Column(name = "lavar_dientes_psych", nullable = false, length = 1)
-    public String getLavarDientesPsych() {
-        return lavarDientesPsych;
-    }
-
-    public void setLavarDientesPsych(String lavarDientesPsych) {
-        this.lavarDientesPsych = lavarDientesPsych;
-    }
-
-    @Column(name = "usar_ropa_limpia_psych", nullable = false, length = 1)
-    public String getUsarRopaLimpiaPsych() {
-        return usarRopaLimpiaPsych;
-    }
-
-    public void setUsarRopaLimpiaPsych(String usarRopaLimpiaPsych) {
-        this.usarRopaLimpiaPsych = usarRopaLimpiaPsych;
-    }
-
-    @Column(name = "juntar_mujeres_psych", nullable = false, length = 1)
-    public String getJuntarMujeresPsych() {
-        return juntarMujeresPsych;
-    }
-
-    public void setJuntarMujeresPsych(String juntarMujeresPsych) {
-        this.juntarMujeresPsych = juntarMujeresPsych;
-    }
-
-    @Column(name = "ayudar_amigas_psych", nullable = false, length = 1)
-    public String getAyudarAmigasPsych() {
-        return ayudarAmigasPsych;
-    }
-
-    public void setAyudarAmigasPsych(String ayudarAmigasPsych) {
-        this.ayudarAmigasPsych = ayudarAmigasPsych;
-    }
-
-    @Column(name = "compartir_info_psych", nullable = false, length = 1)
-    public String getCompartirInfoPsych() {
-        return compartirInfoPsych;
-    }
-
-    public void setCompartirInfoPsych(String compartirInfoPsych) {
-        this.compartirInfoPsych = compartirInfoPsych;
-    }
-
-    @Column(name = "tareas_salud_psych", nullable = false)
-    public String getTareasSaludPsych() {
-        return tareasSaludPsych;
-    }
-
-    public void setTareasSaludPsych(String tareasSaludPsych) {
-        this.tareasSaludPsych = tareasSaludPsych;
-    }
-
-    @Column(name = "funcionamiento_puntaje_psych", nullable = false)
-    public Integer getFuncionamientoPuntajePsych() {
-        return funcionamientoPuntajePsych;
-    }
-
-    public void setFuncionamientoPuntajePsych(Integer funcionamientoPuntajePsych) {
-        this.funcionamientoPuntajePsych = funcionamientoPuntajePsych;
     }
 
     @Column(name = "sin_energia_psych", nullable = false, length = 1)
@@ -473,20 +320,20 @@ public class ZpoV2EvaluacionPsicologica extends BaseMetaData implements Auditabl
     }
 
     @Column(name = "sintomas_puntaje_psych", nullable = false)
-    public Integer getSintomasPuntajePsych() {
+    public Double getSintomasPuntajePsych() {
         return sintomasPuntajePsych;
     }
 
-    public void setSintomasPuntajePsych(Integer sintomasPuntajePsych) {
+    public void setSintomasPuntajePsych(Double sintomasPuntajePsych) {
         this.sintomasPuntajePsych = sintomasPuntajePsych;
     }
 
     @Column(name = "score_depression_psych", nullable = false)
-    public Float getScoreDepressionPsych() {
+    public Double getScoreDepressionPsych() {
         return scoreDepressionPsych;
     }
 
-    public void setScoreDepressionPsych(Float scoreDepressionPsych) {
+    public void setScoreDepressionPsych(Double scoreDepressionPsych) {
         this.scoreDepressionPsych = scoreDepressionPsych;
     }
 
