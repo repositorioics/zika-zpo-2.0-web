@@ -28,7 +28,7 @@ public class ZpoDatosEmbarazadaService {
     @SuppressWarnings("unchecked")
     public List<ZpoDatosEmbarazada> getZpoDatosEmbarazadas(){
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM ZpoDatosEmbarazada a where a.recordId not in (select recordId from Zpo08StudyExit where pasive = '0') ");
+        Query query = session.createQuery("FROM ZpoDatosEmbarazada a where a.recordId not in (select recordId from ZpoV2StudyExit where pasive = '0') ");
         return query.list();
     }
 

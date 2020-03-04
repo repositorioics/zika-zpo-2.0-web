@@ -19,11 +19,11 @@ public class ZpoV2IndCuidadoFamilia extends BaseMetaData implements Auditable {
     private String eventName;
     private Date fechaHoyFci;
     private String cuantosLibrosFci;
-    private String cuantasRevistasFui;
-    private String materialesJugarMonth;
+    private String cuantasRevistasFci;
     private String materialesJugarFci;
     private String variedadJugarFci;
-    private String nombreEncuestadorFci;
+    private String actividadesJugarFci;
+    private String encuestadorFci;
 
     @Id
     @Column(name = "record_id", nullable = false, length = 25)
@@ -45,7 +45,7 @@ public class ZpoV2IndCuidadoFamilia extends BaseMetaData implements Auditable {
         this.eventName = eventName;
     }
 
-    @Column(name = "fecha_de_hoy_fci")
+    @Column(name = "fecha_hoy_fci")
     public Date getFechaHoyFci() {
         return fechaHoyFci;
     }
@@ -64,34 +64,25 @@ public class ZpoV2IndCuidadoFamilia extends BaseMetaData implements Auditable {
         this.cuantosLibrosFci = cuantosLibrosFci;
     }
 
-    @Column(name = "cuantas_revistas_fui", length = 1)
-    public String getCuantasRevistasFui() {
-        return cuantasRevistasFui;
+    @Column(name = "cuantas_revistas_fci", length = 1)
+    public String getCuantasRevistasFci() {
+        return cuantasRevistasFci;
     }
 
-    public void setCuantasRevistasFui(String cuantasRevistasFui) {
-        this.cuantasRevistasFui = cuantasRevistasFui;
+    public void setCuantasRevistasFci(String cuantasRevistasFui) {
+        this.cuantasRevistasFci = cuantasRevistasFui;
     }
 
-    @Column(name = "materiales_jugar_month", length = 10)
-    public String getMaterialesJugarMonth() {
-        return materialesJugarMonth;
-    }
-
-    public void setMaterialesJugarMonth(String materialesJugarMonth) {
-        this.materialesJugarMonth = materialesJugarMonth;
-    }
-
-    @Column(name = "materiales_jugar_fci", length = 15)
+    @Column(name = "materiales_jugar_fci", length = 10)
     public String getMaterialesJugarFci() {
         return materialesJugarFci;
     }
 
-    public void setMaterialesJugarFci(String materialesJugarFci) {
-        this.materialesJugarFci = materialesJugarFci;
+    public void setMaterialesJugarFci(String materialesJugarMonth) {
+        this.materialesJugarFci = materialesJugarMonth;
     }
 
-    @Column(name = "variedad_jugar_fci", length = 12)
+    @Column(name = "variedad_jugar_fci", length = 15)
     public String getVariedadJugarFci() {
         return variedadJugarFci;
     }
@@ -100,13 +91,24 @@ public class ZpoV2IndCuidadoFamilia extends BaseMetaData implements Auditable {
         this.variedadJugarFci = variedadJugarFci;
     }
 
-    @Column(name = "nombre_encuestador_fci", length = 100)
-    public String getNombreEncuestadorFci() {
-        return nombreEncuestadorFci;
+
+    @Column(name = "actividades_jugar_fci", length = 12)
+    public String getActividadesJugarFci() {
+        return actividadesJugarFci;
     }
 
-    public void setNombreEncuestadorFci(String nombreEncuestadorFci) {
-        this.nombreEncuestadorFci = nombreEncuestadorFci;
+    public void setActividadesJugarFci(String actividadesJugarFci) {
+        this.actividadesJugarFci = actividadesJugarFci;
+    }
+
+
+    @Column(name = "encuestador_fci", length = 100)
+    public String getEncuestadorFci() {
+        return encuestadorFci;
+    }
+
+    public void setEncuestadorFci(String encuestadorFci) {
+        this.encuestadorFci = encuestadorFci;
     }
 
     @Override
