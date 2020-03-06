@@ -7,9 +7,20 @@ package ni.org.ics.zpo.v2.utils;
 public class Constants {
     /*eventos de redcap*/
     public static final String SCREENING = "screening_arm_1";
-    public static final String ENTRY = "entry_arm_1";
-    public static final String MONTHS12 = "12_months_arm_2";
-    public static final String MONTHS24 = "24_months_arm_2";
+    public static final String MONTHS24 = "24_months_visit";
+    public static final String MONTH36 = "36_months_visit";
+    public static final String MONTH48 = "48_months_visit";
+    public static final String MONTH60 = "60_months_visit";
+    public static final String MONTH72 = "72_months_visit";
+    public static final String MONTH84 = "84_months_visit";
+    //llamadas
+    public static final String MONTH30 = "30_months_call";
+    public static final String MONTH42 = "42_months_call";
+    public static final String MONTH54 = "54_months_call";
+    public static final String MONTH66 = "66_months_call";
+    public static final String MONTH78 = "78_months_call";
+    public static final String EXIT = "study_exit_arm_1";
+    public static final String INFEXIT = "exit_arm_2";
 
     /*tablas para cada formulario*/
     public static final String TABLE_ZP00 = "zpo00_screening";

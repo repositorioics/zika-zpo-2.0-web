@@ -2563,9 +2563,19 @@ public class ExportarService {
     public List<String> getCompleteRedCapEvents(){
         List<String> redCapEvents = new ArrayList<String>();
         redCapEvents.add(Constants.SCREENING);
-        redCapEvents.add(Constants.ENTRY);
-        redCapEvents.add(Constants.MONTHS12);
         redCapEvents.add(Constants.MONTHS24);
+        redCapEvents.add(Constants.MONTH30);
+        redCapEvents.add(Constants.MONTH36);
+        redCapEvents.add(Constants.MONTH42);
+        redCapEvents.add(Constants.MONTH48);
+        redCapEvents.add(Constants.MONTH54);
+        redCapEvents.add(Constants.MONTH60);
+        redCapEvents.add(Constants.MONTH66);
+        redCapEvents.add(Constants.MONTH72);
+        redCapEvents.add(Constants.MONTH78);
+        redCapEvents.add(Constants.MONTH84);
+        redCapEvents.add(Constants.EXIT);
+        redCapEvents.add(Constants.INFEXIT);
         return redCapEvents;
     }
 

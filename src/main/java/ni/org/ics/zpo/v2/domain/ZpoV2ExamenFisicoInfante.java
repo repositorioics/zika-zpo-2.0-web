@@ -145,7 +145,7 @@ public class ZpoV2ExamenFisicoInfante extends BaseMetaData implements Auditable 
         this.childExamAbnormalExam = childExamAbnormalExam;
     }
 
-    @Column(name = "child_exam_describe_anomaly", length = 100)
+    @Column(name = "child_exam_describe_anomaly", length = 500)
     public String getChildExamDescribeAnomaly() {
         return childExamDescribeAnomaly;
     }
