@@ -134,8 +134,8 @@
                                                     <select class="form-control" id="zpform" name="zpform">
                                                         <option value=""><spring:message code="lbl.select" /> ...</option>
                                                         <option value="Zp00"><spring:message code="zp00" /></option>
-                                                        <option value="Zp01AD"><spring:message code="zp01AD" /></option>
-                                                        <option value="Zp01E"><spring:message code="zp01E" /></option>
+                                                        <option value="ZpoV2CuestDemo"><spring:message code="zpov2_cuest_demo" /></option>
+                                                        <option value="ZpoV2StudyExit"><spring:message code="zpov2_study_exit" /></option>
                                                         <option value="Zp01FK"><spring:message code="zp01FK" /></option>
                                                         <option value="Zp02"><spring:message code="zp02" /></option>
                                                         <option value="Zp03"><spring:message code="zp03" /></option>
@@ -235,7 +235,7 @@
 <script src="${procExportScript}" type="text/javascript"></script>
 
 <spring:url value="/admin/export/getZp00"	var="getZp00"/>
-<spring:url value="/admin/export/getZp01AD"	var="getZp01AD"/>
+<spring:url value="/admin/export/getZpoV2CuestDemo"	var="getZpoV2CuestDemo"/>
 <spring:url value="/admin/export/getZp01E"	var="getZp01E"/>
 <spring:url value="/admin/export/getZp01FK"	var="getZp01FK"/>
 <spring:url value="/admin/export/getZp02"	var="getZp02"/>
@@ -261,8 +261,8 @@
 	jQuery(document).ready(function() {
 		App.init();
 		var parametros = {getZp00 : "${getZp00}",
-            getZp01AD : "${getZp01AD}",
-            getZp01E : "${getZp01E}",
+            getZpoV2CuestDemo : "${getZpoV2CuestDemo}",
+            ZpoV2StudyExit : "${ZpoV2StudyExit}",
             getZp01FK : "${getZp01FK}",
             getZp02 : "${getZp02}",
             getZp03 : "${getZp03}",

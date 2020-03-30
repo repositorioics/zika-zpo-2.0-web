@@ -78,8 +78,8 @@ var Export = function () {
                 var urlForm = "";
                 if (form == 'Zp00'){
                     urlForm = parametros.getZp00;
-                }else if (form == 'Zp01AD'){
-                    urlForm = parametros.getZp01AD;
+                }else if (form == 'ZpoV2CuestDemo'){
+                    urlForm = parametros.getZpoV2CuestDemo;
                 }else if (form == 'Zp01E'){
                     urlForm = parametros.getZp01E;
                 }else if (form == 'Zp01FK'){

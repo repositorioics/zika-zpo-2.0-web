@@ -8,24 +8,24 @@ public class Constants {
     /*eventos de redcap*/
     public static final String SCREENING = "screening_arm_1";
     public static final String MONTHS24 = "24_months_visit";
-    public static final String MONTH36 = "36_months_visit";
-    public static final String MONTH48 = "48_months_visit";
-    public static final String MONTH60 = "60_months_visit";
-    public static final String MONTH72 = "72_months_visit";
-    public static final String MONTH84 = "84_months_visit";
+    public static final String MONTHS36 = "36_months_visit";
+    public static final String MONTHS48 = "48_months_visit";
+    public static final String MONTHS60 = "60_months_visit";
+    public static final String MONTHS72 = "72_months_visit";
+    public static final String MONTHS84 = "84_months_visit";
     //llamadas
-    public static final String MONTH30 = "30_months_call";
-    public static final String MONTH42 = "42_months_call";
-    public static final String MONTH54 = "54_months_call";
-    public static final String MONTH66 = "66_months_call";
-    public static final String MONTH78 = "78_months_call";
+    public static final String MONTHS30 = "30_months_call";
+    public static final String MONTHS42 = "42_months_call";
+    public static final String MONTHS54 = "54_months_call";
+    public static final String MONTHS66 = "66_months_call";
+    public static final String MONTHS78 = "78_months_call";
     public static final String EXIT = "study_exit_arm_1";
     public static final String INFEXIT = "exit_arm_2";
 
     /*tablas para cada formulario*/
     public static final String TABLE_ZP00 = "zpo00_screening";
-    public static final String TABLE_ZP01AD = "zpo01_study_entry_section_a_to_d";
-    public static final String TABLE_ZP01E = "zpo01_study_entry_section_e";
+    public static final String TABLE_ZPOV2_CUEST_DEMO = "zpo_cuest_demografico";
+    public static final String TABLE_ZPOV2_STUDY_EXIT = "zpo_study_exit";
     public static final String TABLE_ZP01FK = "zpo01_study_entry_section_f_to_k";
     public static final String TABLE_ZP02 = "zpo02_biospecimen_collection";
     public static final String TABLE_ZP03 = "zpo03_monthly_visit";

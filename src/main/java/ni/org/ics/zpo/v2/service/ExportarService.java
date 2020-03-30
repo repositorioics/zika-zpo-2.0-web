@@ -35,13 +35,33 @@ public class ExportarService {
 
     private static Connection getConnection() throws Exception{
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUser("zikazip");
-        dataSource.setPassword("jeKAQudi");
+        dataSource.setUser("zikazpo");
+      //  dataSource.setPassword("jeKAQudi");
+        dataSource.setPassword("123456");
         dataSource.setServerName("localhost");
         dataSource.setPort(3306);
         dataSource.setDatabaseName("zika_zpo_v2");
 
         return dataSource.getConnection();
+    }
+
+    public List<String> getRedCapEvents() {
+        List<String> redCapEvents = new ArrayList<String>();
+        redCapEvents.add(Constants.SCREENING);
+        redCapEvents.add(Constants.MONTHS24);
+        redCapEvents.add(Constants.MONTHS30 );
+        redCapEvents.add(Constants.MONTHS36 );
+        redCapEvents.add(Constants.MONTHS42);
+        redCapEvents.add(Constants.MONTHS48);
+        redCapEvents.add(Constants.MONTHS54);
+        redCapEvents.add(Constants.MONTHS60);
+        redCapEvents.add(Constants.MONTHS66);
+        redCapEvents.add(Constants.MONTHS72);
+        redCapEvents.add(Constants.MONTHS78);
+        redCapEvents.add(Constants.MONTHS84);
+        redCapEvents.add(Constants.EXIT);
+        redCapEvents.add(Constants.INFEXIT);
+        return redCapEvents;
     }
 
     private List<String> getTableMetaData(String tableName) throws Exception{
@@ -64,10 +84,7 @@ public class ExportarService {
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("simserial") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("start") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("today") &&
-                        !res.getString("COLUMN_NAME").equalsIgnoreCase("prescreen_id") &&
-                        !res.getString("COLUMN_NAME").contains("_addt_") &&//_addt_ se usa para campos adicionales que no son de redcap
-                        !res.getString("COLUMN_NAME").equalsIgnoreCase("inmunologico")
-                        ) {
+                        !res.getString("COLUMN_NAME").equalsIgnoreCase("prescreen_id") ) {
                     if (res.getString("COLUMN_NAME").equalsIgnoreCase("record_id") && !columns.isEmpty()) {
                         //el record_id siempre debe ser el primer campo
                         String columnaTmp = columns.get(0);
@@ -175,7 +192,7 @@ public class ExportarService {
         return sb;
     }
 
-    public StringBuffer getZp01ADExportData(ExportParameters exportParameters) throws Exception{
+    public StringBuffer getZpoV2CuestDemoExportData(ExportParameters exportParameters) throws Exception{
 
         StringBuffer sb = new StringBuffer();
         Connection con = getConnection();
@@ -206,9 +223,8 @@ public class ExportarService {
             res = pStatement.executeQuery();
 
             //Columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("sea_lmpunknown","sea_lmpunknown___1");
-            columnas = columnas.replaceAll("sea_leavena","sea_leavena___1");
-            columnas += SEPARADOR + "zpo01_study_entry_section_a_to_d_complete";
+            columnas = columnas.replaceAll("recordId","study_id");
+            columnas += SEPARADOR + "demographics_questionnaire_complete";
 
             sb.append(columnas);
             sb.append(SALTOLINEA);
@@ -243,7 +259,7 @@ public class ExportarService {
                             valores += SEPARADOR;
                     }
                 }
-                //valor para zpo01_study_entry_section_a_to_d_complete
+                //valor para demographics_questionnaire_complete
                 valores += SEPARADOR + "1";
                 sb.append(valores);
                 valores = "";
@@ -259,7 +275,7 @@ public class ExportarService {
         return sb;
     }
 
-    public StringBuffer getZp01EExportData(ExportParameters exportParameters) throws Exception{
+    public StringBuffer getZpoV2StudyExitExportData(ExportParameters exportParameters) throws Exception{
 
         StringBuffer sb = new StringBuffer();
         Connection con = getConnection();
@@ -288,41 +304,10 @@ public class ExportarService {
             if (!exportParameters.getEvent().equalsIgnoreCase("all")) pStatement.setString(exportParameters.thereAreCodes()?3:1,exportParameters.getEvent());
 
             res = pStatement.executeQuery();
-            //Valores de campos múltiples
-            String[] diseases = "1,2,3,4,5,6,7,8,9,98".split(",");
-            String[] rashFirst = "1,2,3,4,5,6,7,8,9".split(",");
-            String[] spreadPart = "1,2,3,4,5,6,7,8,9".split(",");
-            String[] sameSymptom = "1,2,3".split(",");
-            String[] specifySymptom = "1,2,3,4,5,6,7,8,9,10,11,12,13".split(",");
-            String[] arm = "1,2".split(",");
-            String[] leg = "1,2".split(",");
-            String[] hand = "1,2".split(",");
-            String[] foot = "1,2".split(",");
-            String[] face = "1,2".split(",");
 
             //columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("sea_diseases","sea_diseases___1,sea_diseases___2,sea_diseases___3,sea_diseases___4,sea_diseases___5,sea_diseases___6,sea_diseases___7,sea_diseases___8,sea_diseases___9,sea_diseases___98");
-            columnas = columnas.replaceAll("sea_rash_first","sea_rash_first___1,sea_rash_first___2,sea_rash_first___3,sea_rash_first___4,sea_rash_first___5,sea_rash_first___6,sea_rash_first___7,sea_rash_first___8,sea_rash_first___9");
-            columnas = columnas.replaceAll("sea_spread_part","sea_spread_part___1,sea_spread_part___2,sea_spread_part___3,sea_spread_part___4,sea_spread_part___5,sea_spread_part___6,sea_spread_part___7,sea_spread_part___8,sea_spread_part___9");
-            columnas = columnas.replaceAll("sea_same_symptom","sea_same_symptom___1,sea_same_symptom___2,sea_same_symptom___3");
-            columnas = columnas.replaceAll("sea_specify_symptom","sea_specify_symptom___1,sea_specify_symptom___2,sea_specify_symptom___3,sea_specify_symptom___4,sea_specify_symptom___5,sea_specify_symptom___6,sea_specify_symptom___7,sea_specify_symptom___8,sea_specify_symptom___9,sea_specify_symptom___10,sea_specify_symptom___11,sea_specify_symptom___12,sea_specify_symptom___13");
-            columnas = columnas.replaceAll("sea_tingling_arm","sea_tingling_arm___1,sea_tingling_arm___2");
-            columnas = columnas.replaceAll("sea_tingling_leg","sea_tingling_leg___1,sea_tingling_leg___2");
-            columnas = columnas.replaceAll("sea_tingling_hand","sea_tingling_hand___1,sea_tingling_hand___2");
-            columnas = columnas.replaceAll("sea_tingling_foot","sea_tingling_foot___1,sea_tingling_foot___2");
-            columnas = columnas.replaceAll("sea_tingling_face","sea_tingling_face___1,sea_tingling_face___2");
-            columnas = columnas.replaceAll("sea_numb_arm","sea_numb_arm___1,sea_numb_arm___2");
-            columnas = columnas.replaceAll("sea_numb_leg","sea_numb_leg___1,sea_numb_leg___2");
-            columnas = columnas.replaceAll("sea_numb_hand","sea_numb_hand___1,sea_numb_hand___2");
-            columnas = columnas.replaceAll("sea_numb_foot","sea_numb_foot___1,sea_numb_foot___2");
-            columnas = columnas.replaceAll("sea_numb_face","sea_numb_face___1,sea_numb_face___2");
-            columnas = columnas.replaceAll("sea_para_arm","sea_para_arm___1,sea_para_arm___2");
-            columnas = columnas.replaceAll("sea_para_leg","sea_para_leg___1,sea_para_leg___2");
-            columnas = columnas.replaceAll("sea_para_hand","sea_para_hand___1,sea_para_hand___2");
-            columnas = columnas.replaceAll("sea_para_foot","sea_para_foot___1,sea_para_foot___2");
-            columnas = columnas.replaceAll("sea_para_face","sea_para_face___1,sea_para_face___2");
-            columnas = columnas.replaceAll("sea_tempunknown","sea_tempunknown___1");
-            columnas += SEPARADOR + "zpo01_study_entry_section_e_complete";
+            columnas = columnas.replaceAll("recordId","codigo_identifica_discont");
+            columnas += SEPARADOR + "discontinuation_form_complete";
 
             sb.append(columnas);
             sb.append(SALTOLINEA);
@@ -331,37 +316,6 @@ public class ExportarService {
                 for(String col : columns){
                     Object val = res.getObject(col);
                     if (val!=null){
-                        if (col.equalsIgnoreCase("sea_diseases")){
-                            valores += setValuesMultipleField(val.toString(), diseases);
-
-                        }else if (col.equalsIgnoreCase("sea_rash_first")) {
-                            valores += setValuesMultipleField(val.toString(), rashFirst);
-
-                        }else if (col.equalsIgnoreCase("sea_spread_part")) {
-                            valores += setValuesMultipleField(val.toString(), spreadPart);
-
-                        }else if (col.equalsIgnoreCase("sea_same_symptom")) {
-                            valores += setValuesMultipleField(val.toString(), sameSymptom);
-
-                        }else if (col.equalsIgnoreCase("sea_specify_symptom")) {
-                            valores += setValuesMultipleField(val.toString(), specifySymptom);
-
-                        }else if (col.equalsIgnoreCase("sea_tingling_arm") || col.equalsIgnoreCase("sea_numb_arm") || col.equalsIgnoreCase("sea_para_arm")){
-                            valores += setValuesMultipleField(val.toString(), arm);
-
-                        }else if (col.equalsIgnoreCase("sea_tingling_leg") || col.equalsIgnoreCase("sea_numb_leg") || col.equalsIgnoreCase("sea_para_leg")){
-                            valores += setValuesMultipleField(val.toString(), leg);
-
-                        }else if (col.equalsIgnoreCase("sea_tingling_hand") || col.equalsIgnoreCase("sea_numb_hand") || col.equalsIgnoreCase("sea_para_hand")){
-                            valores += setValuesMultipleField(val.toString(), hand);
-
-                        }else if (col.equalsIgnoreCase("sea_tingling_foot") || col.equalsIgnoreCase("sea_numb_foot") || col.equalsIgnoreCase("sea_para_foot")){
-                            valores += setValuesMultipleField(val.toString(), foot);
-
-                        }else if (col.equalsIgnoreCase("sea_tingling_face") || col.equalsIgnoreCase("sea_numb_face") || col.equalsIgnoreCase("sea_para_face")) {
-                            valores += setValuesMultipleField(val.toString(), face);
-
-                        }else {
                             if (val instanceof String) {
                                 String valFormat = val.toString().replaceAll(ENTER,ESPACIO).replaceAll(SALTOLINEA,ESPACIO);
                                 //si contiene uno de estos caracteres especiales escapar
@@ -383,41 +337,12 @@ public class ExportarService {
                                 if (valores.isEmpty()) valores += String.valueOf(res.getFloat(col));
                                 else valores += SEPARADOR + String.valueOf(res.getFloat(col));
                             }
-                        }
                     }else{
-                        if (col.equalsIgnoreCase("sea_diseases")){
-                            for(int i = 0 ; i< diseases.length; i++){
-                                valores += SEPARADOR;
-                            }
-                        }else if (col.equalsIgnoreCase("sea_rash_first")){
-                            for(int i = 0 ; i< rashFirst.length; i++){
-                                valores += SEPARADOR;
-                            }
-                        }else if (col.equalsIgnoreCase("sea_spread_part")){
-                            for(int i = 0 ; i< spreadPart.length; i++){
-                                valores += SEPARADOR;
-                            }
-                        }else if (col.equalsIgnoreCase("sea_same_symptom")){
-                            for(int i = 0 ; i< sameSymptom.length; i++){
-                                valores += SEPARADOR;
-                            }
-                        }else if (col.equalsIgnoreCase("sea_specify_symptom")){
-                            for(int i = 0 ; i< specifySymptom.length; i++){
-                                valores += SEPARADOR;
-                            }
-                        } else if (col.equalsIgnoreCase("sea_tingling_arm") || col.equalsIgnoreCase("sea_numb_arm") || col.equalsIgnoreCase("sea_para_arm") ||
-                                col.equalsIgnoreCase("sea_tingling_leg") || col.equalsIgnoreCase("sea_numb_leg") || col.equalsIgnoreCase("sea_para_leg") ||
-                                col.equalsIgnoreCase("sea_tingling_hand") || col.equalsIgnoreCase("sea_numb_hand") || col.equalsIgnoreCase("sea_para_hand") ||
-                                col.equalsIgnoreCase("sea_tingling_foot") || col.equalsIgnoreCase("sea_numb_foot") || col.equalsIgnoreCase("sea_para_foot") ||
-                                col.equalsIgnoreCase("sea_tingling_face") || col.equalsIgnoreCase("sea_numb_face") || col.equalsIgnoreCase("sea_para_face")){
-                            valores += SEPARADOR + SEPARADOR;
-                        }
-                        else {
                             valores += SEPARADOR;
-                        }
+
                     }
                 }
-                //valor para zpo01_study_entry_section_e_complete
+                //valor para discontinuation_form_complete
                 valores += SEPARADOR + "1";
                 sb.append(valores);
                 valores = "";
@@ -2282,7 +2207,7 @@ public class ExportarService {
                             columnasT = columnasT.replaceFirst("scr_prestudyna", "scr_prestudyna___1");
                             columnasT += SEPARADOR + "zpo00_screening_complete";
 
-                        } else if (tableName.equalsIgnoreCase(Constants.TABLE_ZP01AD)) {
+                        } else if (tableName.equalsIgnoreCase(Constants.TABLE_ZPOV2_CUEST_DEMO)) {
                             columnasT = columnasT.replaceFirst("sea_lmpunknown", "sea_lmpunknown___1");
                             columnasT = columnasT.replaceFirst("sea_leavena", "sea_leavena___1");
                             columnasT += SEPARADOR + "zpo01_study_entry_section_a_to_d_complete";
@@ -2564,16 +2489,16 @@ public class ExportarService {
         List<String> redCapEvents = new ArrayList<String>();
         redCapEvents.add(Constants.SCREENING);
         redCapEvents.add(Constants.MONTHS24);
-        redCapEvents.add(Constants.MONTH30);
-        redCapEvents.add(Constants.MONTH36);
-        redCapEvents.add(Constants.MONTH42);
-        redCapEvents.add(Constants.MONTH48);
-        redCapEvents.add(Constants.MONTH54);
-        redCapEvents.add(Constants.MONTH60);
-        redCapEvents.add(Constants.MONTH66);
-        redCapEvents.add(Constants.MONTH72);
-        redCapEvents.add(Constants.MONTH78);
-        redCapEvents.add(Constants.MONTH84);
+        redCapEvents.add(Constants.MONTHS30 );
+        redCapEvents.add(Constants.MONTHS36 );
+        redCapEvents.add(Constants.MONTHS42 );
+        redCapEvents.add(Constants.MONTHS48 );
+        redCapEvents.add(Constants.MONTHS54 );
+        redCapEvents.add(Constants.MONTHS60 );
+        redCapEvents.add(Constants.MONTHS66 );
+        redCapEvents.add(Constants.MONTHS72 );
+        redCapEvents.add(Constants.MONTHS78 );
+        redCapEvents.add(Constants.MONTHS84 );
         redCapEvents.add(Constants.EXIT);
         redCapEvents.add(Constants.INFEXIT);
         return redCapEvents;

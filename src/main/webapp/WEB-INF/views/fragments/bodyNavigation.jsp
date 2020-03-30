@@ -74,6 +74,12 @@
                                     <i class="fa fa-pencil-square-o"></i>
                                     <spring:message code="editdata" /></a>
                             </li>
+
+                            <li class="exportdata">
+                                <a href="<spring:url value="/admin/export/" htmlEscape="true "/>">
+                                    <i class="fa fa-download"></i>
+                                    <spring:message code="export" /></a>
+                            </li>
                         </ul>
                     </li>
                 </sec:authorize>
