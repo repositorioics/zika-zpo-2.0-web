@@ -289,14 +289,18 @@ INSERT INTO `messages` (`messageKey`, `catKey`, `en`, `catPasive`, `es`) VALUES 
 /*Nuevos formularios ZPO 2.0 */
 
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_cuest_sa_mat', '0', 'Cuestionario Salud Materna');
+INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_cuest_sa_mat_upd', '0', 'Actualización Cuestionario Salud Materna');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_cuest_socioe', '0', 'Cuestionario Socieconómico');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_biosp_coll', '0', 'Recolección de muestras materna/infante(s)');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_eval_psico', '0', 'Evaluación Psicológica');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_cuest_demo', '0', 'Cuestionario Demográfico');
+INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_cuest_demo_upd', '0', 'Actualización Cuestionario Demográfico');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_cuest_sa_inf', '0', 'Cuestionario Salud Infantil');
-INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_ind_cuidado_fam', '0', 'Encuesta de Indicadores del Cuidado de la Familia');
-INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_mullen', '0', 'Escala Mullen de Aprendizaje Temprano');
+INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_cuest_sa_inf_upd', '0', 'Actualizacion Cuestionario Salud Infantil');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_exam_fis_inf', '0', 'Examen Físico Infante');
+INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_ind_cuidado_fam', '0', 'Encuesta Indicadores del Cuidado de la Familia');
+INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_mullen', '0', 'Escala Mullen de Aprendizaje Temprano');
+
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_edades_etapas', '0', 'Tamizaje de Edades y Etapas');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_eval_audi', '0', 'Evaluación Auditiva');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_eval_visual', '0', 'Evaluación Visual');

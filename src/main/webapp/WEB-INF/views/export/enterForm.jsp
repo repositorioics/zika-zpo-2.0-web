@@ -133,20 +133,22 @@
                                                 <div class="col-md-8">
                                                     <select class="form-control" id="zpform" name="zpform">
                                                         <option value=""><spring:message code="lbl.select" /> ...</option>
-                                                        <option value="Zp00"><spring:message code="zp00" /></option>
                                                         <option value="ZpoV2CuestDemo"><spring:message code="zpov2_cuest_demo" /></option>
+                                                        <option value="ZpoV2CuestDemoUpd"><spring:message code="zpov2_cuest_demo_upd" /></option>
                                                         <option value="ZpoV2StudyExit"><spring:message code="zpov2_study_exit" /></option>
-                                                        <option value="Zp01FK"><spring:message code="zp01FK" /></option>
-                                                        <option value="Zp02"><spring:message code="zp02" /></option>
-                                                        <option value="Zp03"><spring:message code="zp03" /></option>
-                                                        <option value="Zp04AD"><spring:message code="zp04AD" /></option>
-                                                        <option value="Zp04E"><spring:message code="zp04E" /></option>
-                                                        <option value="Zp04FH"><spring:message code="zp04FH" /></option>
-                                                        <option value="Zp05"><spring:message code="zp05" /></option>
-                                                        <option value="Zp06"><spring:message code="zp06" /></option>
-                                                        <option value="Zp08"><spring:message code="zp08" /></option>
-                                                        <option value="Zp07"><spring:message code="zp07" /></option>
-                                                        <option value="Zp02d"><spring:message code="zp02d" /></option>
+                                                        <option value="ZpoV2CuestSocio"><spring:message code="zpov2_cuest_socioe" /></option>
+                                                        <option value="ZpoV2CuestSaludInfantil"><spring:message code="zpov2_cuest_sa_inf" /></option>
+                                                        <option value="ZpoV2CuestSaludInfantilUpd"><spring:message code="zpov2_cuest_sa_inf_upd" /></option>
+                                                        <option value="ZpoV2ExamFisInf"><spring:message code="zpov2_exam_fis_inf" /></option>
+                                                        <option value="ZpoV2CuestSaludMaterna"><spring:message code="zpov2_cuest_sa_mat" /></option>
+                                                        <option value="ZpoV2CuestSaludMaternaUpd"><spring:message code="zpov2_cuest_sa_mat_upd" /></option>
+                                                        <option value="ZpoV2IndCuidadoFamilia"><spring:message code="zpov2_ind_cuidado_fam" /></option>
+                                                        <option value="ZpoV2BiosColl"><spring:message code="zpov2_biosp_coll" /></option>
+                                                        <option value="ZpoV2Mullen"><spring:message code="zpov2_mullen" /></option>
+                                                        <option value="ZpoV2EvalVisual"><spring:message code="zpov2_eval_visual" /></option>
+                                                        <option value="ZpoV2EvalAuditiva"><spring:message code="zpov2_eval_audi" /></option>
+                                                        <option value="ZpoV2EvalPsico"><spring:message code="zpov2_eval_psico" /></option>
+                                                        <option value="ZpoV2EdadesEtapas"><spring:message code="zpov2_edades_etapas" /></option>
                                                         <option value="all"><spring:message code="allforms" /></option>
                                                     </select>
                                                 </div>
@@ -236,19 +238,23 @@
 
 <spring:url value="/admin/export/getZp00"	var="getZp00"/>
 <spring:url value="/admin/export/getZpoV2CuestDemo"	var="getZpoV2CuestDemo"/>
-<spring:url value="/admin/export/getZp01E"	var="getZp01E"/>
-<spring:url value="/admin/export/getZp01FK"	var="getZp01FK"/>
-<spring:url value="/admin/export/getZp02"	var="getZp02"/>
-<spring:url value="/admin/export/getZp03"	var="getZp03"/>
-<spring:url value="/admin/export/getZp04AD"	var="getZp04AD"/>
-<spring:url value="/admin/export/getZp04E"	var="getZp04E"/>
-<spring:url value="/admin/export/getZp04FH"	var="getZp04FH"/>
-<spring:url value="/admin/export/getZp05"	var="getZp05"/>
-<spring:url value="/admin/export/getZp06"	var="getZp06"/>
-<spring:url value="/admin/export/getZp08"	var="getZp08"/>
-<spring:url value="/admin/export/getAll"	var="getAll"/>
-<spring:url value="/admin/export/getZp07"	var="getZp07"/>
-<spring:url value="/admin/export/getZp02d"	var="getZp02d"/>
+<spring:url value="/admin/export/getZpoV2CuestDemoUpd" var="getZpoV2CuestDemoUpd"/>
+<spring:url value="/admin/export/getZpoV2StudyExit"	var="getZpoV2StudyExit"/>
+<spring:url value="/admin/export/getZpoV2CuestSocio" var="getZpoV2CuestSocio"/>
+<spring:url value="/admin/export/getZpoV2CuestSaludInfantil" var="getZpoV2CuestSaludInfantil"/>
+<spring:url value="/admin/export/getZpoV2CuestSaludInfantilUpd"	var="getZpoV2CuestSaludInfantilUpd"/>
+<spring:url value="/admin/export/getZpoV2ExamFisInf" var="getZpoV2ExamFisInf"/>
+<spring:url value="/admin/export/getZpoV2CuestSaludMaterna" var="getZpoV2CuestSaludMaterna"/>
+<spring:url value="/admin/export/getZpoV2CuestSaludMaternaUpd" var="getZpoV2CuestSaludMaternaUpd"/>
+<spring:url value="/admin/export/getZpoV2IndCuidadoFamilia"	var="getZpoV2IndCuidadoFamilia"/>
+<spring:url value="/admin/export/getZpoBiospColl" var="getZpoBiospColl"/>
+<spring:url value="/admin/export/getZpoV2Mullen" var="getZpoV2Mullen"/>
+<spring:url value="/admin/export/getZpoV2EvalVisual" var="getZpoV2EvalVisual"/>
+<spring:url value="/admin/export/getZpoV2EvalAuditiva" var="getZpoV2EvalAuditiva"/>
+<spring:url value="/admin/export/getZpoV2EvalPsico"	var="getZpoV2EvalPsico"/>
+<spring:url value="/admin/export/getZpoV2EdadesEtapas"	var="getZpoV2EdadesEtapas"/>
+<spring:url value="/admin/export/getZpoV2BiosColl"	var="getZpoV2BiosColl"/>
+<spring:url value="/admin/export/getAll" var="getAll"/>
 
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
@@ -260,20 +266,23 @@
 <script>
 	jQuery(document).ready(function() {
 		App.init();
-		var parametros = {getZp00 : "${getZp00}",
-            getZpoV2CuestDemo : "${getZpoV2CuestDemo}",
-            ZpoV2StudyExit : "${ZpoV2StudyExit}",
-            getZp01FK : "${getZp01FK}",
-            getZp02 : "${getZp02}",
-            getZp03 : "${getZp03}",
-            getZp04AD : "${getZp04AD}",
-            getZp04E : "${getZp04E}",
-            getZp04FH : "${getZp04FH}",
-            getZp06 : "${getZp06}",
-            getZp05 : "${getZp05}",
-            getZp08 : "${getZp08}",
-            getZp07 : "${getZp07}",
-            getZp02d : "${getZp02d}",
+		var parametros = {getZpoV2CuestDemo : "${getZpoV2CuestDemo}",
+            getZpoV2CuestDemoUpd : "${getZpoV2CuestDemoUpd}",
+            getZpoV2StudyExit : "${getZpoV2StudyExit}",
+            getZpoV2CuestSocio : "${getZpoV2CuestSocio}",
+            getZpoV2CuestSaludInfantil : "${getZpoV2CuestSaludInfantil}",
+            getZpoV2CuestSaludInfantilUpd : "${getZpoV2CuestSaludInfantilUpd}",
+            getZpoV2ExamFisInf : "${getZpoV2ExamFisInf}",
+            getZpoV2CuestSaludMaterna : "${getZpoV2CuestSaludMaterna}",
+            getZpoV2CuestSaludMaternaUpd : "${getZpoV2CuestSaludMaternaUpd}",
+            getZpoV2IndCuidadoFamilia : "${getZpoV2IndCuidadoFamilia}",
+            getZpoBiospColl : "${getZpoBiospColl}",
+            getZpoV2Mullen : "${getZpoV2Mullen}",
+            getZpoV2EvalVisual : "${getZpoV2EvalVisual}",
+            getZpoV2EvalAuditiva : "${getZpoV2EvalAuditiva}",
+            getZpoV2EvalPsico : "${getZpoV2EvalPsico}",
+            getZpoV2EdadesEtapas : "${getZpoV2EdadesEtapas}",
+            getZpoV2BiosColl : "${getZpoV2BiosColl}",
             getAll : "${getAll}"
         };
 

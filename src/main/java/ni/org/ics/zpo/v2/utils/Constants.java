@@ -23,18 +23,27 @@ public class Constants {
     public static final String INFEXIT = "exit_arm_2";
 
     /*tablas para cada formulario*/
-    public static final String TABLE_ZP00 = "zpo00_screening";
     public static final String TABLE_ZPOV2_CUEST_DEMO = "zpo_cuest_demografico";
     public static final String TABLE_ZPOV2_STUDY_EXIT = "zpo_study_exit";
-    public static final String TABLE_ZP01FK = "zpo01_study_entry_section_f_to_k";
-    public static final String TABLE_ZP02 = "zpo02_biospecimen_collection";
-    public static final String TABLE_ZP03 = "zpo03_monthly_visit";
-    public static final String TABLE_ZP04AD = "zpo04_trimester_visit_section_a_to_d";
-    public static final String TABLE_ZP04E = "zpo04_trimester_visit_section_e";
-    public static final String TABLE_ZP04FH = "zpo04_trimester_visit_section_f_to_h";
-    public static final String TABLE_ZP05 = "zpo05_ultrasound_exam";
-    public static final String TABLE_ZP06 = "zpo06_delivery_and_6week_visit";
-    public static final String TABLE_ZP08 = "zpo08_study_exit";
-    public static final String TABLE_ZP07 = "zpo07_infant_assessment";
-    public static final String TABLE_ZP02d = "zpo02d_infant_biospecimen_collection";
+    public static final String TABLE_ZPOV2_CUEST_SOCIO = "zpo_cuest_socioeconomico";
+    public static final String TABLE_ZPOV2_CUEST_SA_INF = "zpo_cuest_salud_infantil";
+    public static final String TABLE_ZPOV2_EXAM_FIS_INF = "zpo_examen_fisico_infante";
+    public static final String TABLE_ZPOV2_CUEST_SA_MAT = "zpo_cuest_salud_materna";
+    public static final String TABLE_ZPOV2_IND_CUI_FAM = "zpo_ind_cuidado_fam";
+    public static final String TABLE_ZPOV2_MULLEN = "zpo_mullen";
+    public static final String TABLE_ZPOV2_EVAL_VISUAL = "zpo_eval_visual";
+    public static final String TABLE_ZPOV2_EVAL_AUDITIVA = "zpo_eval_auditiva";
+    public static final String TABLE_ZPOV2_PSYC_EVAL = "zpo_eval_psicologica";
+    public static final String TABLE_ZPOV2_EDADES_ETAPAS = "zpo_edades_etapas";
+    public static final String TABLE_ZPOV2_BIOS_COLL= "zpo_biospecimen_collection";
+
+    public static final String VIEW_ZPOV2_CUEST_DEMO= "zpo_v2_cuest_demo";
+    public static final String VIEW_ZPOV2_CUEST_DEMO_UPD= "zpo_v2_cuest_demo_upd";
+    public static final String VIEW_ZPOV2_CUEST_SA_INF= "zpo_v2_cuest_salud_infantil";
+    public static final String VIEW_ZPOV2_CUEST_SA_INF_UPD = "zpo_v2_cuest_salud_infantil_upd";
+    public static final String VIEW_ZPOV2_CUEST_SA_MAT= "zpo_v2_cuest_salud_materna";
+    public static final String VIEW_ZPOV2_CUEST_SA_MAT_UPD= "zpo_v2_cuest_salud_materna_upd";
+    public static final String VIEW_ZPOV2_MULLEN= "zpo_v2_mullen";
+    public static final String VIEW_ZPOV2_EVAL_AUDI= "zpo_v2_eval_auditiva";
+    public static final String VIEW_ZPOV2_EDADES_ETAPAS_42= "zpo_v2_edades_etapas_42";
 }

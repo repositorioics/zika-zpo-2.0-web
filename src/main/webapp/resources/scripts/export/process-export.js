@@ -80,30 +80,38 @@ var Export = function () {
                     urlForm = parametros.getZp00;
                 }else if (form == 'ZpoV2CuestDemo'){
                     urlForm = parametros.getZpoV2CuestDemo;
-                }else if (form == 'Zp01E'){
-                    urlForm = parametros.getZp01E;
-                }else if (form == 'Zp01FK'){
-                    urlForm = parametros.getZp01FK;
-                }else if (form == 'Zp02'){
-                    urlForm = parametros.getZp02;
-                }else if (form == 'Zp03'){
-                    urlForm = parametros.getZp03;
-                }else if (form == 'Zp04AD'){
-                    urlForm = parametros.getZp04AD;
-                }else if (form == 'Zp04E'){
-                    urlForm = parametros.getZp04E;
-                }else if (form == 'Zp04FH'){
-                    urlForm = parametros.getZp04FH;
-                }else if (form == 'Zp05'){
-                    urlForm = parametros.getZp05;
-                }else if (form == 'Zp06'){
-                    urlForm = parametros.getZp06;
-                }else if (form == 'Zp08'){
-                    urlForm = parametros.getZp08;
-                }else if (form == 'Zp07'){
-                    urlForm = parametros.getZp07;
-                }else if (form == 'Zp02d'){
-                    urlForm = parametros.getZp02d;
+                }else if (form == 'ZpoV2CuestDemoUpd'){
+                    urlForm = parametros.getZpoV2CuestDemoUpd;
+                }else if (form == 'ZpoV2StudyExit'){
+                    urlForm = parametros.getZpoV2StudyExit;
+                }else if (form == 'ZpoV2CuestSocio'){
+                    urlForm = parametros.getZpoV2CuestSocio;
+                }else if (form == 'ZpoV2CuestSaludInfantil'){
+                    urlForm = parametros.getZpoV2CuestSaludInfantil;
+                }else if (form == 'ZpoV2CuestSaludInfantilUpd'){
+                    urlForm = parametros.getZpoV2CuestSaludInfantilUpd;
+                }else if (form == 'ZpoV2ExamFisInf'){
+                    urlForm = parametros.getZpoV2ExamFisInf;
+                }else if (form == 'ZpoV2CuestSaludMaterna'){
+                    urlForm = parametros.getZpoV2CuestSaludMaterna;
+                }else if (form == 'ZpoV2CuestSaludMaternaUpd'){
+                    urlForm = parametros.getZpoV2CuestSaludMaternaUpd;
+                }else if (form == 'ZpoV2IndCuidadoFamilia'){
+                    urlForm = parametros.getZpoV2IndCuidadoFamilia;
+                }else if (form == 'ZpoBiospColl'){
+                    urlForm = parametros.getZpoBiospColl;
+                }else if (form == 'ZpoV2Mullen'){
+                    urlForm = parametros.getZpoV2Mullen;
+                }else if (form == 'ZpoV2EvalVisual'){
+                    urlForm = parametros.getZpoV2EvalVisual;
+                }else if (form == 'ZpoV2EvalAuditiva'){
+                    urlForm = parametros.getZpoV2EvalAuditiva;
+                }else if (form == 'ZpoV2EvalPsico'){
+                    urlForm = parametros.getZpoV2EvalPsico;
+                }else if (form == 'ZpoV2EdadesEtapas'){
+                        urlForm = parametros.getZpoV2EdadesEtapas;
+                }else if (form == 'ZpoV2BiosColl'){
+                        urlForm = parametros.getZpoV2BiosColl;
                 }else{
                     urlForm = parametros.getAll;
                 }
