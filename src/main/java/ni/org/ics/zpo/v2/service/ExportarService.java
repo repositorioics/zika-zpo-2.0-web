@@ -36,9 +36,10 @@ public class ExportarService {
     private static Connection getConnection() throws Exception {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser("zikazpo");
-        dataSource.setPassword("jeKAQudi");
+        dataSource.setPassword("jiKAQude");
         //dataSource.setPassword("123456");
-        dataSource.setServerName("localhost");
+       dataSource.setServerName("141.211.217.99");
+      // dataSource.setServerName("localhost");
         dataSource.setPort(3306);
         dataSource.setDatabaseName("zika_zpo_v2");
 
@@ -128,7 +129,9 @@ public class ExportarService {
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("area_motoragruesa") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("area_socioindividual") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("area_solucionproblemas") &&
+                        !res.getString("COLUMN_NAME").equalsIgnoreCase("event_name") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("idCompleted") &&
+                        !res.getString("COLUMN_NAME").equalsIgnoreCase("child_exam_circumstances") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("today")) {
                     if (res.getString("COLUMN_NAME").equalsIgnoreCase("record_id") && !columns.isEmpty()) {
                         //el record_id siempre debe ser el primer campo
@@ -170,6 +173,7 @@ public class ExportarService {
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("start") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("today") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("descripcion_prob_neuro_nino_upd") &&
+                        !res.getString("COLUMN_NAME").equalsIgnoreCase("event_name") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("problema_comer_nino_upd")) {
                     if (res.getString("COLUMN_NAME").equalsIgnoreCase("record_id") && !columns.isEmpty()) {
                         //el record_id siempre debe ser el primer campo
@@ -223,6 +227,7 @@ public class ExportarService {
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("problemas_extrem_nino") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("problemas_lactancia_nino") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("talla_nacer_nino") &&
+                        !res.getString("COLUMN_NAME").equalsIgnoreCase("event_name") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("transfusion_nino_upd")) {
                     if (res.getString("COLUMN_NAME").equalsIgnoreCase("record_id") && !columns.isEmpty()) {
                         //el record_id siempre debe ser el primer campo
@@ -263,6 +268,7 @@ public class ExportarService {
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("simserial") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("start") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("today") &&
+                        !res.getString("COLUMN_NAME").equalsIgnoreCase("event_name") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("embarazada_visita_maternal_upd") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("dado_luz_maternal_upd")) {
                     if (res.getString("COLUMN_NAME").equalsIgnoreCase("record_id") && !columns.isEmpty()) {
@@ -316,6 +322,7 @@ public class ExportarService {
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("prob_fuera_embar_maternal") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("quien_defecto1_maternal") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("quien_defecto2_maternal") &&
+                        !res.getString("COLUMN_NAME").equalsIgnoreCase("event_name") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("veces_embarazada_maternal")) {
                     if (res.getString("COLUMN_NAME").equalsIgnoreCase("record_id") && !columns.isEmpty()) {
                         //el record_id siempre debe ser el primer campo
@@ -368,6 +375,7 @@ public class ExportarService {
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("nombre_padre_demogr") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("raza_demogr") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("sexo_demogr") &&
+                        !res.getString("COLUMN_NAME").equalsIgnoreCase("event_name") &&
                         !res.getString("COLUMN_NAME").equalsIgnoreCase("ubicacion_casa_demogr")) {
                     if (res.getString("COLUMN_NAME").equalsIgnoreCase("record_id") && !columns.isEmpty()) {
                         //el record_id siempre debe ser el primer campo
@@ -423,7 +431,7 @@ public class ExportarService {
 
             //Columnas que necesita redcap y no estan en la tabla
             columnas = columnas.replaceAll("record_id", "study_id");
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+           // columnas = columnas.replaceAll("event_name", "redcap_event_name");
             columnas += SEPARADOR + "demographics_questionnaire_complete";
 
             sb.append(columnas);
@@ -510,7 +518,7 @@ public class ExportarService {
             res = pStatement.executeQuery();
             //Valores de campos múltiples
 
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+          //  columnas = columnas.replaceAll("event_name", "redcap_event_name");
             columnas = columnas.replaceAll("fecha_de_hoy_demogr", "fecha_hoy_demogr_upd");
             columnas = columnas.replaceAll("direccion_barrio_demogr", "barrio_demogr_upd");
             columnas = columnas.replaceAll("direccion_exacta_demogr", "direccion_demogr_upd");
@@ -604,7 +612,7 @@ public class ExportarService {
 
             //Columnas que necesita redcap y no estan en la tabla
             columnas = columnas.replaceAll("record_id", "codigo_identifica_discont");
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+          //  columnas = columnas.replaceAll("event_name", "redcap_event_name");
             columnas += SEPARADOR + "discontinuation_form_complete";
 
             sb.append(columnas);
@@ -694,7 +702,8 @@ public class ExportarService {
             String[] animales = "1,2,3,4,5,6,7,8,9,10".split(",");
 
             //Columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+          //  columnas = columnas.replaceAll("event_name", "redcap_event_name");
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas = columnas.replaceAll("paredes_casa_ses", "paredes_casa_ses___1,paredes_casa_ses___2,paredes_casa_ses___3,paredes_casa_ses___4,paredes_casa_ses___5,paredes_casa_ses___6,paredes_casa_ses___7, paredes_casa_ses___8");
             columnas = columnas.replaceAll("fuente_agua_ses", "fuente_agua_ses___1,fuente_agua_ses___2,fuente_agua_ses___3,fuente_agua_ses___4,fuente_agua_ses___5,fuente_agua_ses___6,fuente_agua_ses___7, fuente_agua_ses___8");
             columnas = columnas.replaceAll("tipo_bano_ses", "tipo_bano_ses___1,tipo_bano_ses___2,tipo_bano_ses___3,tipo_bano_ses___4");
@@ -832,13 +841,14 @@ public class ExportarService {
             String[] problemasNino = "1,2,3,4,5,6,7,8,9,10,11,12,13".split(",");
 
             //columnas que necesita redcap y no estan en la tabla
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas = columnas.replaceAll("prob_embarazo_nino", "prob_embarazo_nino___1,prob_embarazo_nino___2,prob_embarazo_nino___3,prob_embarazo_nino___4,prob_embarazo_nino___5,prob_embarazo_nino___6,prob_embarazo_nino___7,prob_embarazo_nino___8");
             columnas = columnas.replaceAll("ocurrio_embarazo_nino", "ocurrio_embarazo_nino___1,ocurrio_embarazo_nino___2,ocurrio_embarazo_nino___3,ocurrio_embarazo_nino___4,ocurrio_embarazo_nino___5");
             columnas = columnas.replaceAll("problemas_bebe_nino", "problemas_bebe_nino___1,problemas_bebe_nino___2,problemas_bebe_nino___3,problemas_bebe_nino___4,problemas_bebe_nino___5,problemas_bebe_nino___6,problemas_bebe_nino___7,problemas_bebe_nino___8,problemas_bebe_nino___9,problemas_bebe_nino___10,problemas_bebe_nino___11,problemas_bebe_nino___12,problemas_bebe_nino___13,problemas_bebe_nino___14,problemas_bebe_nino___15,problemas_bebe_nino___16");
             columnas = columnas.replaceAll("parte_dia_afuera_nino", "parte_dia_afuera_nino___1,parte_dia_afuera_nino___2,parte_dia_afuera_nino___3,parte_dia_afuera_nino___4,parte_dia_afuera_nino___5");
             columnas = columnas.replaceAll("problemas_nino", "problemas_nino___1,problemas_nino___2,problemas_nino___3,problemas_nino___4,problemas_nino___5,problemas_nino___6,problemas_nino___7,problemas_nino___8,problemas_nino___9,problemas_nino___10,problemas_nino___11,problemas_nino___12,problemas_nino___13");
 
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+            //columnas = columnas.replaceAll("event_name", "redcap_event_name");
             columnas += SEPARADOR + "child_health_questionnaire_complete";
 
             sb.append(columnas);
@@ -967,10 +977,11 @@ public class ExportarService {
             String[] problemasNino = "1,2,3,4,5,6,7,8,9,10,11,12,13".split(",");
 
             //columnas que necesita redcap y no estan en la tabla
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas = columnas.replaceAll("parte_dia_afuera_nino", "parte_dia_afuera_nino_upd___1,parte_dia_afuera_nino_upd___2,parte_dia_afuera_nino_upd___3,parte_dia_afuera_nino_upd___4,parte_dia_afuera_nino_upd___5");
             columnas = columnas.replaceAll("problemas_nino", "problemas_nino_upd___1,problemas_nino_upd___2,problemas_nino_upd___3,problemas_nino_upd___4,problemas_nino_upd___5,problemas_nino_upd___6,problemas_nino_upd___7,problemas_nino_upd___8,problemas_nino_upd___9,problemas_nino_upd___10,problemas_nino_upd___11,problemas_nino_upd___12,problemas_nino_upd___13");
 
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+          //  columnas = columnas.replaceAll("event_name", "redcap_event_name");
             columnas = columnas.replaceAll("fecha_hoy_nino", "fecha_hoy_nino_upd");
             columnas = columnas.replaceAll("vision_prob_nino", "prob_vision_nino_upd");
             columnas = columnas.replaceAll("vision_describa_nino", "describa_vision_nino_upd");
@@ -1117,6 +1128,7 @@ public class ExportarService {
             String[] childExamOptho = "1,2,3".split(",");
 
             //columnas que necesita redcap y no estan en la tabla
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas = columnas.replaceAll("child_exam_optho_fiding", "child_exam_optho_fiding___1,child_exam_optho_fiding___2,child_exam_optho_fiding___3");
 
             columnas += SEPARADOR + "child_physical_exam_complete";
@@ -1213,9 +1225,10 @@ public class ExportarService {
             }
 
             res = pStatement.executeQuery();
-
+            columnas = columnas.replaceAll("record_id", "study_id");
             //columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+         //   columnas = columnas.replaceAll("event_name", "redcap_event_name");
+
             columnas += SEPARADOR + "maternal_health_questionnaire_complete";
 
             sb.append(columnas);
@@ -1302,7 +1315,8 @@ public class ExportarService {
             res = pStatement.executeQuery();
 
             //columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+         //   columnas = columnas.replaceAll("event_name", "redcap_event_name");
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas = columnas.replaceAll("fecha_hoy_maternal", "fecha_hoy_maternal_upd");
             columnas = columnas.replaceAll("fuma_cigarros_maternal", "cigarros_maternal_upd");
             columnas = columnas.replaceAll("toma_alcohol_maternal", "alcohol_maternal_upd");
@@ -1397,6 +1411,7 @@ public class ExportarService {
             String[] actividadJugar = "1,2,3,4,5,6,7,8".split(",");
 
             //columnas que necesita redcap y no estan en la tabla
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas = columnas.replaceAll("materiales_jugar_fci", "materiales_jugar_fci___1,materiales_jugar_fci___2,materiales_jugar_fci___3,materiales_jugar_fci___4,materiales_jugar_fci___5,materiales_jugar_fci___6");
             columnas = columnas.replaceAll("variedad_jugar_fci", "variedad_jugar_fci___1,variedad_jugar_fci___2,variedad_jugar_fci___3,variedad_jugar_fci___4,variedad_jugar_fci___5,variedad_jugar_fci___6,variedad_jugar_fci___7,variedad_jugar_fci___8,variedad_jugar_fci___9");
             columnas = columnas.replaceAll("actividades_jugar_fci", "actividades_jugar_fci___1,actividades_jugar_fci___2,actividades_jugar_fci___3,actividades_jugar_fci___4,actividades_jugar_fci___5,actividades_jugar_fci___6,actividades_jugar_fci___7,actividades_jugar_fci___8");
@@ -1509,7 +1524,8 @@ public class ExportarService {
             res = pStatement.executeQuery();
 
             //Columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+           // columnas = columnas.replaceAll("event_name", "redcap_event_name");
+            columnas = columnas.replaceAll("cod_nino_msel", "study_id");
             columnas += SEPARADOR + "mullen_msel_complete";
 
             sb.append(columnas);
@@ -1593,7 +1609,8 @@ public class ExportarService {
             res = pStatement.executeQuery();
 
             //columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+          //  columnas = columnas.replaceAll("event_name", "redcap_event_name");
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas = columnas.replaceAll("incapaz_nivel_joven_optho", "incapaz_nivel_joven_optho___1");
             columnas = columnas.replaceAll("semanas_optho", "semanas_optho___1");
             columnas = columnas.replaceAll("meses_3_optho", "meses_3_optho___1");
@@ -1686,8 +1703,9 @@ public class ExportarService {
             String[] haPadecidoAlguna = "1,2,3,4,5,6".split(",");
 
             //columnas que necesita redcap y no estan en la tabla
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas = columnas.replaceAll("ha_padecido_de_alguna_de_l", "ha_padecido_de_alguna_de_l___1,ha_padecido_de_alguna_de_l___2,ha_padecido_de_alguna_de_l___3,ha_padecido_de_alguna_de_l___4,ha_padecido_de_alguna_de_l___5,ha_padecido_de_alguna_de_l___6");
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+          //  columnas = columnas.replaceAll("event_name", "redcap_event_name");
             columnas = columnas.replaceAll("record_id", "codigo_del_estudio");
 
 
@@ -1784,7 +1802,8 @@ public class ExportarService {
             res = pStatement.executeQuery();
 
             //Columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+           // columnas = columnas.replaceAll("event_name", "redcap_event_name");
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas += SEPARADOR + "psychological_evaluation_complete";
 
             sb.append(columnas);
@@ -1869,8 +1888,8 @@ public class ExportarService {
 
 
             //columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
-            columnas = columnas.replaceAll("cod_nino_4_meses", "cod_nino_42_meses");
+           // columnas = columnas.replaceAll("event_name", "redcap_event_name");
+            columnas = columnas.replaceAll("cod_nino_4_meses", "study_id");
             columnas = columnas.replaceAll("visit_date", "fecha_42_meses");
             columnas = columnas.replaceAll("comunicacion_4_meses", "comunicacion_42_meses");
             columnas = columnas.replaceAll("motora_gruesa_4_meses", "motora_gruesa_42_meses");
@@ -1962,7 +1981,8 @@ public class ExportarService {
             res = pStatement.executeQuery();
 
             //columnas que necesita redcap y no estan en la tabla
-            columnas = columnas.replaceAll("event_name", "redcap_event_name");
+            columnas = columnas.replaceAll("record_id", "study_id");
+          //  columnas = columnas.replaceAll("event_name", "redcap_event_name");
 
             columnas += SEPARADOR + "blood_sample_complete";
 
@@ -2427,6 +2447,7 @@ public class ExportarService {
                             !res.getString("COLUMN_NAME").equalsIgnoreCase("area_motorafina") &&
                             !res.getString("COLUMN_NAME").equalsIgnoreCase("area_motoragruesa") &&
                             !res.getString("COLUMN_NAME").equalsIgnoreCase("area_socioindividual") &&
+                            !res.getString("COLUMN_NAME").equalsIgnoreCase("event_name") &&
                             !res.getString("COLUMN_NAME").equalsIgnoreCase("area_solucionproblemas") &&
                             !res.getString("COLUMN_NAME").equalsIgnoreCase("idCompleted") &&
                             !res.getString("COLUMN_NAME").equalsIgnoreCase("today")

@@ -26,7 +26,8 @@ public class QueryService {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser("zikazpo");
         dataSource.setPassword("jiKAQude");
-        dataSource.setServerName("localhost");
+        dataSource.setServerName("141.211.217.99");
+        //dataSource.setServerName("localhost");
         dataSource.setPort(3306);
         dataSource.setDatabaseName("zika_zpo_v2");
 

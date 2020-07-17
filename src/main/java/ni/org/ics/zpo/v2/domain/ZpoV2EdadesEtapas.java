@@ -143,7 +143,7 @@ public class ZpoV2EdadesEtapas extends BaseMetaData implements Auditable {
         this.areaMotoraFina = areaMotoraFina;
     }
 
-    @Column(name = "area_solucionproblemas ", length = 1)
+    @Column(name = "area_solucionproblemas", length = 1)
     public String getAreaSolucionProblemas() {
         return areaSolucionProblemas;
     }
@@ -152,7 +152,7 @@ public class ZpoV2EdadesEtapas extends BaseMetaData implements Auditable {
         this.areaSolucionProblemas = areaSolucionProblemas;
     }
 
-    @Column(name = "area_socioindividual ", length = 1)
+    @Column(name = "area_socioindividual", length = 1)
     public String getAreaSocioIndividual() {
         return areaSocioIndividual;
     }

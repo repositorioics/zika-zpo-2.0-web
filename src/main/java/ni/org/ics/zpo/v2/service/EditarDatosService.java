@@ -28,7 +28,8 @@ public class EditarDatosService {
         dataSource.setUser("zikazpo");
         dataSource.setPassword("jiKAQude");
       //  dataSource.setPassword("123456");
-        dataSource.setServerName("localhost");
+      //  dataSource.setServerName("localhost");
+        dataSource.setServerName("141.211.217.99");
         dataSource.setPort(3306);
         dataSource.setDatabaseName("zika_zpo_v2");
 
