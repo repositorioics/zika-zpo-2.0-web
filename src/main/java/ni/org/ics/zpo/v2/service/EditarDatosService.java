@@ -118,6 +118,9 @@ public class EditarDatosService {
             StringBuilder sbUpdate = null;
             String nombreCampoId = "record_id", nombreCampoEvento = "event_name";
 
+            if (tabla.equalsIgnoreCase("zpo_mullen")) nombreCampoId = "cod_nino_msel";
+            else if (tabla.equalsIgnoreCase("zpo_edades_etapas")) nombreCampoId = "cod_nino_4_meses";
+
             if (tabla.equalsIgnoreCase("zp_reporte_us_recepcion") || tabla.equalsIgnoreCase("zp_reporte_us_salida")) {
                 nombreCampoId = "codigo";
                 nombreCampoEvento = "evento";
