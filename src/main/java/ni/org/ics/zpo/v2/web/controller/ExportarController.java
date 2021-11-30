@@ -53,8 +53,8 @@ public class ExportarController {
         res.setContentType("application/csv");
         res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "ZpoV2DemoQuestionnaire.csv" +"\""));
         PrintWriter w = res.getWriter();
-        String ev = Constants.MONTHS24;
-        ExportParameters ep = new ExportParameters(Constants.TABLE_ZPOV2_CUEST_DEMO,codigoInicio,codigoFin,ev);
+        //String ev = Constants.MONTHS24;
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_CUEST_DEMO,codigoInicio,codigoFin,event);
         StringBuffer registros = null;
         try {
             registros = exportarService.getZpoV2CuestDemoExportData(ep);
@@ -77,7 +77,7 @@ public class ExportarController {
         res.setContentType("application/csv");
         res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "ZpoV2DemoQuestionnaireUpd.csv" +"\""));
         PrintWriter w = res.getWriter();
-        ExportParameters ep = new ExportParameters(Constants.TABLE_ZPOV2_CUEST_DEMO,codigoInicio,codigoFin,event);
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_CUEST_DEMO_UPD,codigoInicio,codigoFin,event);
         StringBuffer registros = null;
         try {
             registros = exportarService.getZpoV2CuestDemoUpdExportData(ep);
@@ -147,8 +147,7 @@ public class ExportarController {
         res.setContentType("application/csv");
         res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2ChildHealthQuestionnaire.csv" +"\""));
         PrintWriter w = res.getWriter();
-        String ev = Constants.MONTHS24;
-        ExportParameters ep = new ExportParameters(Constants.TABLE_ZPOV2_CUEST_SA_INF,codigoInicio,codigoFin,ev);
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_CUEST_SA_INF,codigoInicio,codigoFin,event);
         StringBuffer registros = null;
         try {
             registros = exportarService.getZpoV2CuestSaInfExportData(ep);
@@ -171,7 +170,7 @@ public class ExportarController {
         res.setContentType("application/csv");
         res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2ChildHealthQuestionnaireUpd.csv" +"\""));
         PrintWriter w = res.getWriter();
-        ExportParameters ep = new ExportParameters(Constants.TABLE_ZPOV2_CUEST_SA_INF,codigoInicio,codigoFin,event);
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_CUEST_SA_INF_UPD,codigoInicio,codigoFin,event);
         StringBuffer registros = null;
         try {
             registros = exportarService.getZpoV2CuestSaInfUpdExportData(ep);
@@ -218,8 +217,7 @@ public class ExportarController {
         res.setContentType("application/csv");
         res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2MaternalHealthQuestionnaire.csv" +"\""));
         PrintWriter w = res.getWriter();
-        String ev = Constants.MONTHS24;
-        ExportParameters ep = new ExportParameters(Constants.TABLE_ZPOV2_CUEST_SA_MAT,codigoInicio,codigoFin,ev);
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_CUEST_SA_MAT,codigoInicio,codigoFin,event);
         StringBuffer registros = null;
         try {
             registros = exportarService.getZpoV2CuestSaMatExportData(ep);
@@ -242,7 +240,7 @@ public class ExportarController {
         res.setContentType("application/csv");
         res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2MaternalHealthQuestionnaireUpd.csv" +"\""));
         PrintWriter w = res.getWriter();
-        ExportParameters ep = new ExportParameters(Constants.TABLE_ZPOV2_CUEST_SA_MAT,codigoInicio,codigoFin,event);
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_CUEST_SA_MAT_UPD,codigoInicio,codigoFin,event);
         StringBuffer registros = null;
         try {
             registros = exportarService.getZpoV2CuestSaludMaternaUpdExportData(ep);
@@ -288,7 +286,7 @@ public class ExportarController {
         res.setContentType("application/csv");
         res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2Mullen.csv" +"\""));
         PrintWriter w = res.getWriter();
-        ExportParameters ep = new ExportParameters(Constants.TABLE_ZPOV2_MULLEN,codigoInicio,codigoFin,event);
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_MULLEN,codigoInicio,codigoFin,event);
         StringBuffer registros = null;
         try {
             registros = exportarService.getZpoV2MullenExportData(ep);
@@ -370,7 +368,7 @@ public class ExportarController {
         w.close();
     }
 
-    @RequestMapping(value = "getZpoV2EdadesEtapas", method = RequestMethod.GET)
+    @RequestMapping(value = "getZpoV2EdadesEtapas42", method = RequestMethod.GET)
     public void getZpoV2EdadesEtapas(@RequestParam(value = "codigoInicio", required = false) String codigoInicio,
                                   @RequestParam(value = "codigoFin", required = false) String codigoFin,
                                   @RequestParam(value = "event", required = false) String event,
@@ -378,9 +376,9 @@ public class ExportarController {
             throws ServletException, IOException {
 
         res.setContentType("application/csv");
-        res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2ASQ.csv" +"\""));
+        res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2ASQ42.csv" +"\""));
         PrintWriter w = res.getWriter();
-        ExportParameters ep = new ExportParameters(Constants.TABLE_ZPOV2_EDADES_ETAPAS,codigoInicio,codigoFin,event);
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_EDADES_ETAPAS_42,codigoInicio,codigoFin,event);
         StringBuffer registros = null;
         try {
             registros = exportarService.getZpoV2EdadesEtapasExportData(ep);
@@ -444,6 +442,30 @@ public class ExportarController {
                     registros.append(exportarService.getAllExportData(ep));
                 }
             }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        w.println(registros);
+        w.flush();
+        w.close();
+    }
+
+
+    @RequestMapping(value = "getZpoV2EdadesEtapas54", method = RequestMethod.GET)
+    public void getZpoV2EdadesEtapas54(@RequestParam(value = "codigoInicio", required = false) String codigoInicio,
+                                     @RequestParam(value = "codigoFin", required = false) String codigoFin,
+                                     @RequestParam(value = "event", required = false) String event,
+                                     HttpServletResponse res)
+            throws ServletException, IOException {
+
+        res.setContentType("application/csv");
+        res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2ASQ54.csv" +"\""));
+        PrintWriter w = res.getWriter();
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_EDADES_ETAPAS_54,codigoInicio,codigoFin,event);
+        StringBuffer registros = null;
+        try {
+            registros = exportarService.getZpoV2EdadesEtapas54ExportData(ep);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

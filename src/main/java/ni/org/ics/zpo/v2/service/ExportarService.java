@@ -35,11 +35,11 @@ public class ExportarService {
 
     private static Connection getConnection() throws Exception {
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUser("zikazpo");
+        dataSource.setUser("zikazpov2");
         dataSource.setPassword("jiKAQude");
         //dataSource.setPassword("123456");
        dataSource.setServerName("141.211.217.99");
-      // dataSource.setServerName("localhost");
+        //dataSource.setServerName("localhost");
         dataSource.setPort(3306);
         dataSource.setDatabaseName("zika_zpo_v2");
 
@@ -415,18 +415,19 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (exportParameters.getEvent().equalsIgnoreCase(Constants.MONTHS24)) {
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
                 sqlStrBuilder.append(" and event_name = ?");
             }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+          //  pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
             }
-            if (exportParameters.getEvent().equalsIgnoreCase(Constants.MONTHS24)) {
-                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, Constants.MONTHS24);
-            }
+            if (!exportParameters.getEvent().equalsIgnoreCase("all"))
+                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
+
             res = pStatement.executeQuery();
 
             //Columnas que necesita redcap y no estan en la tabla
@@ -502,18 +503,18 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (exportParameters.getEvent().equalsIgnoreCase("all")) {
-                sqlStrBuilder.append(" and event_name != ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
             }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+         //   pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
             }
-            if (exportParameters.getEvent().equalsIgnoreCase("all")) {
-                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, Constants.MONTHS24);
-            }
+            if (!exportParameters.getEvent().equalsIgnoreCase("all"))
+                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
 
             res = pStatement.executeQuery();
             //Valores de campos múltiples
@@ -598,9 +599,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+          //  pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -683,9 +687,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+           // pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -819,20 +826,21 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (exportParameters.getEvent().equalsIgnoreCase(Constants.MONTHS24)) {
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
                 sqlStrBuilder.append(" and event_name = ?");
             }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+          //  pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
             }
-            if (exportParameters.getEvent().equalsIgnoreCase(Constants.MONTHS24)) {
-                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, Constants.MONTHS24);
-            }
+            if (!exportParameters.getEvent().equalsIgnoreCase("all"))
+                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
 
             res = pStatement.executeQuery();
+
             //Valores de campos múltiples
             String[] problemaEmbarazoNino = "1,2,3,4,5,6,7,8".split(",");
             String[] ocurrioEmbarazoNino = "1,2,3,4,5".split(",");
@@ -958,20 +966,21 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (exportParameters.getEvent().equalsIgnoreCase("all")) {
-                sqlStrBuilder.append(" and event_name != ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
             }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+          //  pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
             }
-            if (exportParameters.getEvent().equalsIgnoreCase("all")) {
-                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, Constants.MONTHS24);
-            }
+            if (!exportParameters.getEvent().equalsIgnoreCase("all"))
+                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
 
             res = pStatement.executeQuery();
+
             //Valores de campos múltiples
             String[] parteDiaAfueraNino = "1,2,3,4,5".split(",");
             String[] problemasNino = "1,2,3,4,5,6,7,8,9,10,11,12,13".split(",");
@@ -982,7 +991,7 @@ public class ExportarService {
             columnas = columnas.replaceAll("problemas_nino", "problemas_nino_upd___1,problemas_nino_upd___2,problemas_nino_upd___3,problemas_nino_upd___4,problemas_nino_upd___5,problemas_nino_upd___6,problemas_nino_upd___7,problemas_nino_upd___8,problemas_nino_upd___9,problemas_nino_upd___10,problemas_nino_upd___11,problemas_nino_upd___12,problemas_nino_upd___13");
 
           //  columnas = columnas.replaceAll("event_name", "redcap_event_name");
-            columnas = columnas.replaceAll("fecha_hoy_nino", "fecha_hoy_nino_upd");
+          /*  columnas = columnas.replaceAll("fecha_hoy_nino", "fecha_hoy_nino_upd");
             columnas = columnas.replaceAll("vision_prob_nino", "prob_vision_nino_upd");
             columnas = columnas.replaceAll("vision_describa_nino", "describa_vision_nino_upd");
             columnas = columnas.replaceAll("audicion_prob_nino", "prob_auditivo_nino_upd");
@@ -1024,7 +1033,7 @@ public class ExportarService {
             columnas = columnas.replaceAll("fecha_chikungunya_nino", "fecha_chikungunya_nino_upd");
             columnas = columnas.replaceAll("diagnosticado_dengue_nino", "diagnosticado_dengue_nino_upd");
             columnas = columnas.replaceAll("fecha_dengue_nino", "fecha_dengue_nino_upd");
-            columnas = columnas.replaceAll("nombre_encuestador_nino", "encuestador_nino_upd");
+            columnas = columnas.replaceAll("nombre_encuestador_nino", "encuestador_nino_upd");*/
 
             columnas += SEPARADOR + "child_health_update_complete";
 
@@ -1113,9 +1122,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+           // pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -1124,6 +1136,7 @@ public class ExportarService {
                 pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
 
             res = pStatement.executeQuery();
+
             //Valores de campos múltiples
             String[] childExamOptho = "1,2,3".split(",");
 
@@ -1211,20 +1224,21 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (exportParameters.getEvent().equalsIgnoreCase(Constants.MONTHS24)) {
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
                 sqlStrBuilder.append(" and event_name = ?");
             }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+           // pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
             }
-            if (exportParameters.getEvent().equalsIgnoreCase(Constants.MONTHS24)) {
-                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, Constants.MONTHS24);
-            }
+            if (!exportParameters.getEvent().equalsIgnoreCase("all"))
+                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
 
             res = pStatement.executeQuery();
+
             columnas = columnas.replaceAll("record_id", "study_id");
             //columnas que necesita redcap y no estan en la tabla
          //   columnas = columnas.replaceAll("event_name", "redcap_event_name");
@@ -1299,30 +1313,30 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (exportParameters.getEvent().equalsIgnoreCase("all")) {
-                sqlStrBuilder.append(" and event_name != ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
             }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+           // pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
             }
-            if (exportParameters.getEvent().equalsIgnoreCase("all")) {
-                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, Constants.MONTHS24);
-            }
+            if (!exportParameters.getEvent().equalsIgnoreCase("all"))
+                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
 
             res = pStatement.executeQuery();
 
             //columnas que necesita redcap y no estan en la tabla
          //   columnas = columnas.replaceAll("event_name", "redcap_event_name");
             columnas = columnas.replaceAll("record_id", "study_id");
-            columnas = columnas.replaceAll("fecha_hoy_maternal", "fecha_hoy_maternal_upd");
+            /*columnas = columnas.replaceAll("fecha_hoy_maternal", "fecha_hoy_maternal_upd");
             columnas = columnas.replaceAll("fuma_cigarros_maternal", "cigarros_maternal_upd");
             columnas = columnas.replaceAll("toma_alcohol_maternal", "alcohol_maternal_upd");
             columnas = columnas.replaceAll("medicam_actual_maternal", "medicamento_maternal_upd");
             columnas = columnas.replaceAll("otro_medicam_maternal", "otro_medicamento_maternal_upd");
-            columnas = columnas.replaceAll("nombre_encuestador_maternal", "encuestador_maternal_upd");
+            columnas = columnas.replaceAll("nombre_encuestador_maternal", "encuestador_maternal_upd");*/
 
             columnas += SEPARADOR + "maternal_health_questionnaire_update_complete";
 
@@ -1394,9 +1408,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+           // pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -1405,6 +1422,7 @@ public class ExportarService {
                 pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
 
             res = pStatement.executeQuery();
+
             //Valores de campos múltiples
             String[] materialesJugar = "1,2,3,4,5,6".split(",");
             String[] variedadJugar = "1,2,3,4,5,6,7,8,9".split(",");
@@ -1511,9 +1529,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            //pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -1525,7 +1546,7 @@ public class ExportarService {
 
             //Columnas que necesita redcap y no estan en la tabla
            // columnas = columnas.replaceAll("event_name", "redcap_event_name");
-            columnas = columnas.replaceAll("cod_nino_msel", "study_id");
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas += SEPARADOR + "mullen_msel_complete";
 
             sb.append(columnas);
@@ -1596,9 +1617,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+           // pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -1688,9 +1712,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+          //  pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -1699,6 +1726,7 @@ public class ExportarService {
                 pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
 
             res = pStatement.executeQuery();
+
             //Valores de campos múltiples
             String[] haPadecidoAlguna = "1,2,3,4,5,6".split(",");
 
@@ -1789,9 +1817,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+           // pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -1874,9 +1905,12 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+
+             pStatement = con.prepareStatement(sqlStrBuilder.toString());
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());
@@ -1889,15 +1923,7 @@ public class ExportarService {
 
             //columnas que necesita redcap y no estan en la tabla
            // columnas = columnas.replaceAll("event_name", "redcap_event_name");
-            columnas = columnas.replaceAll("cod_nino_4_meses", "study_id");
-            columnas = columnas.replaceAll("visit_date", "fecha_42_meses");
-            columnas = columnas.replaceAll("comunicacion_4_meses", "comunicacion_42_meses");
-            columnas = columnas.replaceAll("motora_gruesa_4_meses", "motora_gruesa_42_meses");
-            columnas = columnas.replaceAll("motora_fina_4_meses", "motora_fina_42_meses");
-            columnas = columnas.replaceAll("res_prob_4_meses", "res_prob_42_meses");
-            columnas = columnas.replaceAll("socio_ind_4_meses", "socio_ind_42_meses");
-            columnas = columnas.replaceAll("com_gen_obs_4_meses", "com_gen_obs_42_meses");
-
+            columnas = columnas.replaceAll("record_id", "study_id");
             columnas += SEPARADOR + "asq3_42_meses_39_meses_0_das_a_44_meses_30_das_complete";
 
             sb.append(columnas);
@@ -1949,6 +1975,96 @@ public class ExportarService {
         return sb;
     }
 
+    public StringBuffer getZpoV2EdadesEtapas54ExportData(ExportParameters exportParameters) throws Exception {
+
+        StringBuffer sb = new StringBuffer();
+        Connection con = getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet res = null;
+        String columnas = "";
+        String valores = "";
+
+        try {
+            //recuperar los nombres de las columnas
+            List<String> columns = getTableMetaData(exportParameters.getTableName());
+            columnas = parseColumns(columns);
+
+            //pasar a recuperar los datos. Setear parámetro si los hay
+            StringBuilder sqlStrBuilder = new StringBuilder();
+            sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
+
+            if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
+
+            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            //    pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
+            if (exportParameters.thereAreCodes()) {
+                pStatement.setString(1, exportParameters.getCodigoInicio());
+                pStatement.setString(2, exportParameters.getCodigoFin());
+            }
+            if (!exportParameters.getEvent().equalsIgnoreCase("all"))
+                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
+
+            res = pStatement.executeQuery();
+
+
+            //columnas que necesita redcap y no estan en la tabla
+            // columnas = columnas.replaceAll("event_name", "redcap_event_name");
+
+            columnas = columnas.replaceAll("record_id", "study_id");
+            columnas += SEPARADOR + "asq3_54_meses_51_meses_0_das_a_56_meses_30_das_complete";
+
+            sb.append(columnas);
+            sb.append(SALTOLINEA);
+
+            while (res.next()) {
+                for (String col : columns) {
+                    Object val = res.getObject(col);
+                    if (val != null) {
+                        if (val instanceof String) {
+                            String valFormat = val.toString().replaceAll(ENTER, ESPACIO).replaceAll(SALTOLINEA, ESPACIO);
+                            //si contiene uno de estos caracteres especiales escapar
+                            if (valFormat.contains(SEPARADOR) || valFormat.contains(COMILLA) || valFormat.contains(SALTOLINEA)) {
+                                valores += SEPARADOR + QUOTE + valFormat.trim() + QUOTE;
+                            } else {
+                                if (valores.isEmpty()) valores += valFormat.trim();
+                                else valores += SEPARADOR + valFormat.trim();
+                            }
+                        } else if (val instanceof Integer) {
+                            if (valores.isEmpty()) valores += String.valueOf(res.getInt(col));
+                            else valores += SEPARADOR + String.valueOf(res.getInt(col));
+
+                        } else if (val instanceof java.util.Date) {
+                            if (valores.isEmpty()) valores += DateToString(res.getDate(col), "dd/MM/yyyy");
+                            else valores += SEPARADOR + DateToString(res.getDate(col), "dd/MM/yyyy");
+
+                        } else if (val instanceof Float) {
+                            if (valores.isEmpty()) valores += String.valueOf(res.getFloat(col));
+                            else valores += SEPARADOR + String.valueOf(res.getFloat(col));
+                        }
+
+                    } else {
+                        valores += SEPARADOR;
+                    }
+                }
+                //valor para asq3_54_meses_51_meses_0_das_a_56_meses_30_das_complete
+                valores += SEPARADOR + "1";
+                sb.append(valores);
+                valores = "";
+                sb.append(SALTOLINEA);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (res != null) res.close();
+            if (pStatement != null) pStatement.close();
+            if (con != null) con.close();
+        }
+        return sb;
+    }
+
     public StringBuffer getZpoV2BiosCollExportData(ExportParameters exportParameters) throws Exception {
 
         StringBuffer sb = new StringBuffer();
@@ -1968,9 +2084,13 @@ public class ExportarService {
             sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
 
             if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
-            if (!exportParameters.getEvent().equalsIgnoreCase("all")) sqlStrBuilder.append(" and event_name = ?");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
 
-            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+           // pStatement = con.prepareStatement(sqlStrBuilder.toString());
+
+            pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
             if (exportParameters.thereAreCodes()) {
                 pStatement.setString(1, exportParameters.getCodigoInicio());
                 pStatement.setString(2, exportParameters.getCodigoFin());

@@ -108,8 +108,10 @@ var Export = function () {
                     urlForm = parametros.getZpoV2EvalAuditiva;
                 }else if (form == 'ZpoV2EvalPsico'){
                     urlForm = parametros.getZpoV2EvalPsico;
-                }else if (form == 'ZpoV2EdadesEtapas'){
-                        urlForm = parametros.getZpoV2EdadesEtapas;
+                }else if (form == 'ZpoV2EdadesEtapas42'){
+                        urlForm = parametros.getZpoV2EdadesEtapas42;
+                }else if (form == 'ZpoV2EdadesEtapas54'){
+                        urlForm = parametros.getZpoV2EdadesEtapas54;
                 }else if (form == 'ZpoV2BiosColl'){
                         urlForm = parametros.getZpoV2BiosColl;
                 }else{

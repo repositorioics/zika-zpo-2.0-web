@@ -25,7 +25,7 @@ public class EditarDatosService {
 
     private static Connection getConnection() throws Exception{
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUser("zikazpo");
+        dataSource.setUser("zikazpov2");
         dataSource.setPassword("jiKAQude");
       //  dataSource.setPassword("123456");
       //  dataSource.setServerName("localhost");

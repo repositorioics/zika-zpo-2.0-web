@@ -61,7 +61,7 @@ public class ZpoV2StudyExit extends BaseMetaData implements Auditable {
         this.razonPorDiscont = razonPorDiscont;
     }
 
-    @Column(name = "otra_razon_discontin", length = 100)
+    @Column(name = "otra_razon_discontin", length = 500)
     public String getOtraRazonDiscontin() {
         return otraRazonDiscontin;
     }

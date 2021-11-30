@@ -254,7 +254,6 @@ public class ZpoV2CuestionarioDemografico extends BaseMetaData implements Audita
         this.nombreEncuestadorDemogr = nombreEncuestadorDemogr;
     }
 
-
     @Override
     public boolean isFieldAuditable(String fieldname) {
         return false;

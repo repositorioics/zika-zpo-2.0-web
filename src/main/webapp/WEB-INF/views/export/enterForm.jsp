@@ -148,7 +148,8 @@
                                                         <option value="ZpoV2EvalVisual"><spring:message code="zpov2_eval_visual" /></option>
                                                         <option value="ZpoV2EvalAuditiva"><spring:message code="zpov2_eval_audi" /></option>
                                                         <option value="ZpoV2EvalPsico"><spring:message code="zpov2_eval_psico" /></option>
-                                                        <option value="ZpoV2EdadesEtapas"><spring:message code="zpov2_edades_etapas" /></option>
+                                                        <option value="ZpoV2EdadesEtapas42"><spring:message code="zpov2_edades_etapas42" /></option>
+                                                        <option value="ZpoV2EdadesEtapas54"><spring:message code="zpov2_edades_etapas54" /></option>
                                                         <option value="all"><spring:message code="allforms" /></option>
                                                     </select>
                                                 </div>
@@ -252,7 +253,8 @@
 <spring:url value="/admin/export/getZpoV2EvalVisual" var="getZpoV2EvalVisual"/>
 <spring:url value="/admin/export/getZpoV2EvalAuditiva" var="getZpoV2EvalAuditiva"/>
 <spring:url value="/admin/export/getZpoV2EvalPsico"	var="getZpoV2EvalPsico"/>
-<spring:url value="/admin/export/getZpoV2EdadesEtapas"	var="getZpoV2EdadesEtapas"/>
+<spring:url value="/admin/export/getZpoV2EdadesEtapas42"	var="getZpoV2EdadesEtapas42"/>
+<spring:url value="/admin/export/getZpoV2EdadesEtapas54"	var="getZpoV2EdadesEtapas54"/>
 <spring:url value="/admin/export/getZpoV2BiosColl"	var="getZpoV2BiosColl"/>
 <spring:url value="/admin/export/getAll" var="getAll"/>
 
@@ -281,7 +283,8 @@
             getZpoV2EvalVisual : "${getZpoV2EvalVisual}",
             getZpoV2EvalAuditiva : "${getZpoV2EvalAuditiva}",
             getZpoV2EvalPsico : "${getZpoV2EvalPsico}",
-            getZpoV2EdadesEtapas : "${getZpoV2EdadesEtapas}",
+            getZpoV2EdadesEtapas42 : "${getZpoV2EdadesEtapas42}",
+            getZpoV2EdadesEtapas54 : "${getZpoV2EdadesEtapas54}",
             getZpoV2BiosColl : "${getZpoV2BiosColl}",
             getAll : "${getAll}"
         };
