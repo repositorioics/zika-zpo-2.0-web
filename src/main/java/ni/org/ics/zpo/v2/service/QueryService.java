@@ -1,6 +1,7 @@
 package ni.org.ics.zpo.v2.service;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+//import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import ni.org.ics.zpo.v2.utils.ConnectionUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,22 +23,10 @@ public class QueryService {
     private static final String QUOTE = "\"";
     private static final String COMA = "\"";
 
-    private static Connection getConnection() throws Exception{
-        MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUser("zikazpo");
-        dataSource.setPassword("jiKAQude");
-        dataSource.setServerName("141.211.217.99");
-        //dataSource.setServerName("localhost");
-        dataSource.setPort(3306);
-        dataSource.setDatabaseName("zika_zpo_v2");
-
-        return dataSource.getConnection();
-    }
-
     public StringBuffer getResultQuery(String query) throws Exception{
         StringBuffer sb = new StringBuffer();
 
-        Connection con = getConnection();
+        Connection con = ConnectionUtil.getConnection();
         Statement statement = null;
         ResultSet res = null;
         String columnas = "";

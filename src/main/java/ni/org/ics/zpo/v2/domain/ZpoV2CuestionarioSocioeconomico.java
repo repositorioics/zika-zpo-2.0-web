@@ -571,7 +571,7 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
         this.preescolarSes = preescolarSes;
     }
 
-    @Column(name = "cuando_preescolar_ses", length = 10)
+    @Column(name = "cuando_preescolar_ses", length = 30)
     public String getCuandoPreescolarSes() {
         return cuandoPreescolarSes;
     }
