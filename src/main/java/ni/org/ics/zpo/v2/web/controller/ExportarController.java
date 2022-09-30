@@ -475,6 +475,29 @@ public class ExportarController {
         w.close();
     }
 
+    @RequestMapping(value = "getZpoV2EdadesEtapas66", method = RequestMethod.GET)
+    public void getZpoV2EdadesEtapas66(@RequestParam(value = "codigoInicio", required = false) String codigoInicio,
+                                       @RequestParam(value = "codigoFin", required = false) String codigoFin,
+                                       @RequestParam(value = "event", required = false) String event,
+                                       HttpServletResponse res)
+            throws ServletException, IOException {
+
+        res.setContentType("application/csv");
+        res.setHeader("Content-Disposition", String.format("inline; filename=\"" + "getZpoV2ASQ66.csv" +"\""));
+        PrintWriter w = res.getWriter();
+        ExportParameters ep = new ExportParameters(Constants.VIEW_ZPOV2_EDADES_ETAPAS_66,codigoInicio,codigoFin,event);
+        StringBuffer registros = null;
+        try {
+            registros = exportarService.getZpoV2EdadesEtapas66ExportData(ep);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        w.println(registros);
+        w.flush();
+        w.close();
+    }
+
 
 
 }

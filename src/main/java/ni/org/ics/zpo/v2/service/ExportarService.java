@@ -2052,6 +2052,98 @@ public class ExportarService {
         return sb;
     }
 
+
+
+    public StringBuffer getZpoV2EdadesEtapas66ExportData(ExportParameters exportParameters) throws Exception {
+
+        StringBuffer sb = new StringBuffer();
+        Connection con = ConnectionUtil.getConnection();
+        PreparedStatement pStatement = null;
+        ResultSet res = null;
+        String columnas = "";
+        String valores = "";
+
+        try {
+            //recuperar los nombres de las columnas
+            List<String> columns = getTableMetaData(exportParameters.getTableName());
+            columnas = parseColumns(columns);
+
+            //pasar a recuperar los datos. Setear parámetro si los hay
+            StringBuilder sqlStrBuilder = new StringBuilder();
+            sqlStrBuilder.append("select ").append(columnas).append(" from ").append(exportParameters.getTableName()).append(" where 1=1 ");
+
+            if (exportParameters.thereAreCodes()) sqlStrBuilder.append(" and record_id between ? and ? ");
+            if (!exportParameters.getEvent().equalsIgnoreCase("all")) {
+                sqlStrBuilder.append(" and event_name = ?");
+            }
+
+            pStatement = con.prepareStatement(sqlStrBuilder.toString());
+            //    pStatement = con.prepareStatement(sqlStrBuilder.toString().replaceAll("record_id", "substring(record_id,1,7) as record_id"));
+            if (exportParameters.thereAreCodes()) {
+                pStatement.setString(1, exportParameters.getCodigoInicio());
+                pStatement.setString(2, exportParameters.getCodigoFin());
+            }
+            if (!exportParameters.getEvent().equalsIgnoreCase("all"))
+                pStatement.setString(exportParameters.thereAreCodes() ? 3 : 1, exportParameters.getEvent());
+
+            res = pStatement.executeQuery();
+
+
+            //columnas que necesita redcap y no estan en la tabla
+            // columnas = columnas.replaceAll("event_name", "redcap_event_name");
+
+            columnas = columnas.replaceAll("record_id", "study_id");
+            columnas += SEPARADOR + "asq3_60_meses_57_meses_0_das_a_66_meses_0_das_complete";
+
+            sb.append(columnas);
+            sb.append(SALTOLINEA);
+
+            while (res.next()) {
+                for (String col : columns) {
+                    Object val = res.getObject(col);
+                    if (val != null) {
+                        if (val instanceof String) {
+                            String valFormat = val.toString().replaceAll(ENTER, ESPACIO).replaceAll(SALTOLINEA, ESPACIO);
+                            //si contiene uno de estos caracteres especiales escapar
+                            if (valFormat.contains(SEPARADOR) || valFormat.contains(COMILLA) || valFormat.contains(SALTOLINEA)) {
+                                valores += SEPARADOR + QUOTE + valFormat.trim() + QUOTE;
+                            } else {
+                                if (valores.isEmpty()) valores += valFormat.trim();
+                                else valores += SEPARADOR + valFormat.trim();
+                            }
+                        } else if (val instanceof Integer) {
+                            if (valores.isEmpty()) valores += String.valueOf(res.getInt(col));
+                            else valores += SEPARADOR + String.valueOf(res.getInt(col));
+
+                        } else if (val instanceof java.util.Date) {
+                            if (valores.isEmpty()) valores += DateToString(res.getDate(col), "dd/MM/yyyy");
+                            else valores += SEPARADOR + DateToString(res.getDate(col), "dd/MM/yyyy");
+
+                        } else if (val instanceof Float) {
+                            if (valores.isEmpty()) valores += String.valueOf(res.getFloat(col));
+                            else valores += SEPARADOR + String.valueOf(res.getFloat(col));
+                        }
+
+                    } else {
+                        valores += SEPARADOR;
+                    }
+                }
+                //valor para asq3_60_meses_57_meses_0_das_a_66_meses_0_das_complete
+                valores += SEPARADOR + "1";
+                sb.append(valores);
+                valores = "";
+                sb.append(SALTOLINEA);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (res != null) res.close();
+            if (pStatement != null) pStatement.close();
+            if (con != null) con.close();
+        }
+        return sb;
+    }
+
     public StringBuffer getZpoV2BiosCollExportData(ExportParameters exportParameters) throws Exception {
 
         StringBuffer sb = new StringBuffer();

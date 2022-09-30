@@ -47,4 +47,5 @@ public class Constants {
     public static final String VIEW_ZPOV2_EVAL_AUDI= "zpo_v2_eval_auditiva";
     public static final String VIEW_ZPOV2_EDADES_ETAPAS_42= "zpo_v2_edades_etapas_42";
     public static final String VIEW_ZPOV2_EDADES_ETAPAS_54= "zpo_v2_edades_etapas_54";
+    public static final String VIEW_ZPOV2_EDADES_ETAPAS_66= "zpo_v2_edades_etapas_66";
 }

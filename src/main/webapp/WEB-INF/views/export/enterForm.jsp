@@ -150,6 +150,7 @@
                                                         <option value="ZpoV2EvalPsico"><spring:message code="zpov2_eval_psico" /></option>
                                                         <option value="ZpoV2EdadesEtapas42"><spring:message code="zpov2_edades_etapas42" /></option>
                                                         <option value="ZpoV2EdadesEtapas54"><spring:message code="zpov2_edades_etapas54" /></option>
+                                                        <option value="ZpoV2EdadesEtapas66"><spring:message code="zpov2_edades_etapas66" /></option>
                                                         <option value="all"><spring:message code="allforms" /></option>
                                                     </select>
                                                 </div>
@@ -255,6 +256,7 @@
 <spring:url value="/admin/export/getZpoV2EvalPsico"	var="getZpoV2EvalPsico"/>
 <spring:url value="/admin/export/getZpoV2EdadesEtapas42"	var="getZpoV2EdadesEtapas42"/>
 <spring:url value="/admin/export/getZpoV2EdadesEtapas54"	var="getZpoV2EdadesEtapas54"/>
+<spring:url value="/admin/export/getZpoV2EdadesEtapas66"	var="getZpoV2EdadesEtapas66"/>
 <spring:url value="/admin/export/getZpoV2BiosColl"	var="getZpoV2BiosColl"/>
 <spring:url value="/admin/export/getAll" var="getAll"/>
 
@@ -285,6 +287,7 @@
             getZpoV2EvalPsico : "${getZpoV2EvalPsico}",
             getZpoV2EdadesEtapas42 : "${getZpoV2EdadesEtapas42}",
             getZpoV2EdadesEtapas54 : "${getZpoV2EdadesEtapas54}",
+            getZpoV2EdadesEtapas66 : "${getZpoV2EdadesEtapas66}",
             getZpoV2BiosColl : "${getZpoV2BiosColl}",
             getAll : "${getAll}"
         };

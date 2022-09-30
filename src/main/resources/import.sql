@@ -307,3 +307,4 @@ INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_eval_vis
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_study_exit', '0', 'Salida del Estudio');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_edades_etapas42', '0', 'Tamizaje de Edades y Etapas 42 meses');
 INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_edades_etapas54', '0', 'Tamizaje de Edades y Etapas 54 meses');
+INSERT INTO `messages` (`messageKey`, `catPasive`, `es`) VALUES ('zpov2_edades_etapas66', '0', 'Tamizaje de Edades y Etapas 66 meses');

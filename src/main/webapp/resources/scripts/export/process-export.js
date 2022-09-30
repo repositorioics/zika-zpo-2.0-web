@@ -112,6 +112,8 @@ var Export = function () {
                         urlForm = parametros.getZpoV2EdadesEtapas42;
                 }else if (form == 'ZpoV2EdadesEtapas54'){
                         urlForm = parametros.getZpoV2EdadesEtapas54;
+                }else if (form == 'ZpoV2EdadesEtapas66'){
+                    urlForm = parametros.getZpoV2EdadesEtapas66;
                 }else if (form == 'ZpoV2BiosColl'){
                         urlForm = parametros.getZpoV2BiosColl;
                 }else{
