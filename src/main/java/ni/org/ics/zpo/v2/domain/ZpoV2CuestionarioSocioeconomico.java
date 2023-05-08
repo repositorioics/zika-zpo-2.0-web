@@ -74,6 +74,13 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
     private String cuandoPreescolarSes;
     private String ambosPadresSes;
 
+    private String pri;
+    private String sec;
+    private String third;
+    private String schCovid;
+    private String primarySch;
+
+
     @Id
     @Column(name = "record_id", nullable = false, length = 25)
     public String getRecordId() {
@@ -587,6 +594,51 @@ public class ZpoV2CuestionarioSocioeconomico extends BaseMetaData implements Aud
 
     public void setAmbosPadresSes(String ambosPadresSes) {
         this.ambosPadresSes = ambosPadresSes;
+    }
+
+    @Column(name = "pri", length = 2)
+    public String getPri() {
+        return pri;
+    }
+
+    public void setPri(String pri) {
+        this.pri = pri;
+    }
+
+    @Column(name = "sec", length = 2)
+    public String getSec() {
+        return sec;
+    }
+
+    public void setSec(String sec) {
+        this.sec = sec;
+    }
+
+    @Column(name = "third", length = 2)
+    public String getThird() {
+        return third;
+    }
+
+    public void setThird(String third) {
+        this.third = third;
+    }
+
+    @Column(name = "sch_covid", length = 2)
+    public String getSchCovid() {
+        return schCovid;
+    }
+
+    public void setSchCovid(String schCovid) {
+        this.schCovid = schCovid;
+    }
+
+    @Column(name = "primary_sch", length = 2)
+    public String getPrimarySch() {
+        return primarySch;
+    }
+
+    public void setPrimarySch(String primarySch) {
+        this.primarySch = primarySch;
     }
 
     @Override
