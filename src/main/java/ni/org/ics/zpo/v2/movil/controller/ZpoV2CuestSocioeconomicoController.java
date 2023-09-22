@@ -48,7 +48,7 @@ public class ZpoV2CuestSocioeconomicoController {
      * @return String con el resultado
      */
     @RequestMapping(value = "saveCuestSocioecs", method = RequestMethod.POST, consumes = "application/json")
-    public @ResponseBody String saveZpoIndCuidadoFams(@RequestBody ZpoV2CuestionarioSocioeconomico[] envio) {
+    public @ResponseBody String saveZpoV2CuestSocioeconomico(@RequestBody ZpoV2CuestionarioSocioeconomico[] envio) {
         logger.debug("Insertando/Actualizando Cuestionario Socioeconomico");
         if (envio == null){
             logger.debug("Nulo");
